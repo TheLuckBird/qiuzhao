@@ -1,0 +1,193 @@
+﻿生成启动时间为 2019/9/7 10:13:53。
+     1>项目“D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\ServerSeckey.vcxproj”在节点 2 上(Build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\obj\x64\Debug\ServerSeckey.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       _ValidateSources:
+         Validating sources
+       _CopySources:
+         Copying sources remotely to '192.168.237.166'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\BaseShm.cpp' to '/root/projects/ServerSeckey/BaseShm.cpp'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\Codec.cpp' to '/root/projects/ServerSeckey/Codec.cpp'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\CodecFactory.cpp' to '/root/projects/ServerSeckey/CodecFactory.cpp'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\Hash.cpp' to '/root/projects/ServerSeckey/Hash.cpp'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\main.cpp' to '/root/projects/ServerSeckey/main.cpp'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\Message.pb.cc' to '/root/projects/ServerSeckey/Message.pb.cc'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\OCCIOP.cpp' to '/root/projects/ServerSeckey/OCCIOP.cpp'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\RequestCodec.cpp' to '/root/projects/ServerSeckey/RequestCodec.cpp'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\RequestFactory.cpp' to '/root/projects/ServerSeckey/RequestFactory.cpp'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\RespondCodec.cpp' to '/root/projects/ServerSeckey/RespondCodec.cpp'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\RespondFactory.cpp' to '/root/projects/ServerSeckey/RespondFactory.cpp'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\RsaCrypto.cpp' to '/root/projects/ServerSeckey/RsaCrypto.cpp'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\SecKeyShm.cpp' to '/root/projects/ServerSeckey/SecKeyShm.cpp'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp' to '/root/projects/ServerSeckey/ServerOP.cpp'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\TcpServer.cpp' to '/root/projects/ServerSeckey/TcpServer.cpp'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\TcpSocket.cpp' to '/root/projects/ServerSeckey/TcpSocket.cpp'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\BaseShm.h' to '/root/projects/ServerSeckey/BaseShm.h'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\Codec.h' to '/root/projects/ServerSeckey/Codec.h'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\CodecFactory.h' to '/root/projects/ServerSeckey/CodecFactory.h'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\Hash.h' to '/root/projects/ServerSeckey/Hash.h'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\Message.pb.h' to '/root/projects/ServerSeckey/Message.pb.h'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\OCCIOP.h' to '/root/projects/ServerSeckey/OCCIOP.h'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\RequestCodec.h' to '/root/projects/ServerSeckey/RequestCodec.h'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\RequestFactory.h' to '/root/projects/ServerSeckey/RequestFactory.h'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\RespondCodec.h' to '/root/projects/ServerSeckey/RespondCodec.h'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\RespondFactory.h' to '/root/projects/ServerSeckey/RespondFactory.h'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\RsaCrypto.h' to '/root/projects/ServerSeckey/RsaCrypto.h'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\SecKeyShm.h' to '/root/projects/ServerSeckey/SecKeyShm.h'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\SeckKeyNodeInfo.h' to '/root/projects/ServerSeckey/SeckKeyNodeInfo.h'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\ServerOP.h' to '/root/projects/ServerSeckey/ServerOP.h'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\TcpServer.h' to '/root/projects/ServerSeckey/TcpServer.h'
+         Copying file 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\TcpSocket.h' to '/root/projects/ServerSeckey/TcpSocket.h'
+       _ValidateValidArchitecture:
+         Validating architecture
+         Current project architecture 'x64' is compatible with the remote system architecture 'x64' ('x64').
+       ClCompile:
+         Starting remote build
+         Compiling sources:
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/ServerSeckey/BaseShm.cpp -g2 -gdwarf-2 -o "/root/projects/ServerSeckey/obj/x64/Debug/BaseShm.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         BaseShm.cpp
+         Done compiling '/root/projects/ServerSeckey/BaseShm.cpp'
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/ServerSeckey/Codec.cpp -g2 -gdwarf-2 -o "/root/projects/ServerSeckey/obj/x64/Debug/Codec.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         Codec.cpp
+         Done compiling '/root/projects/ServerSeckey/Codec.cpp'
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/ServerSeckey/CodecFactory.cpp -g2 -gdwarf-2 -o "/root/projects/ServerSeckey/obj/x64/Debug/CodecFactory.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         CodecFactory.cpp
+         Done compiling '/root/projects/ServerSeckey/CodecFactory.cpp'
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/ServerSeckey/Hash.cpp -g2 -gdwarf-2 -o "/root/projects/ServerSeckey/obj/x64/Debug/Hash.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         Hash.cpp
+         Done compiling '/root/projects/ServerSeckey/Hash.cpp'
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/ServerSeckey/main.cpp -g2 -gdwarf-2 -o "/root/projects/ServerSeckey/obj/x64/Debug/main.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         main.cpp
+         Done compiling '/root/projects/ServerSeckey/main.cpp'
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/ServerSeckey/Message.pb.cc -g2 -gdwarf-2 -o "/root/projects/ServerSeckey/obj/x64/Debug/Message.pb.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         Message.pb.cc
+         Done compiling '/root/projects/ServerSeckey/Message.pb.cc'
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/ServerSeckey/OCCIOP.cpp -g2 -gdwarf-2 -o "/root/projects/ServerSeckey/obj/x64/Debug/OCCIOP.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         OCCIOP.cpp
+         Done compiling '/root/projects/ServerSeckey/OCCIOP.cpp'
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/ServerSeckey/RequestCodec.cpp -g2 -gdwarf-2 -o "/root/projects/ServerSeckey/obj/x64/Debug/RequestCodec.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         RequestCodec.cpp
+         Done compiling '/root/projects/ServerSeckey/RequestCodec.cpp'
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/ServerSeckey/RequestFactory.cpp -g2 -gdwarf-2 -o "/root/projects/ServerSeckey/obj/x64/Debug/RequestFactory.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         RequestFactory.cpp
+         Done compiling '/root/projects/ServerSeckey/RequestFactory.cpp'
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/ServerSeckey/RespondCodec.cpp -g2 -gdwarf-2 -o "/root/projects/ServerSeckey/obj/x64/Debug/RespondCodec.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         RespondCodec.cpp
+         Done compiling '/root/projects/ServerSeckey/RespondCodec.cpp'
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/ServerSeckey/RespondFactory.cpp -g2 -gdwarf-2 -o "/root/projects/ServerSeckey/obj/x64/Debug/RespondFactory.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         RespondFactory.cpp
+         Done compiling '/root/projects/ServerSeckey/RespondFactory.cpp'
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/ServerSeckey/RsaCrypto.cpp -g2 -gdwarf-2 -o "/root/projects/ServerSeckey/obj/x64/Debug/RsaCrypto.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         RsaCrypto.cpp
+         Done compiling '/root/projects/ServerSeckey/RsaCrypto.cpp'
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/ServerSeckey/SecKeyShm.cpp -g2 -gdwarf-2 -o "/root/projects/ServerSeckey/obj/x64/Debug/SecKeyShm.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         SecKeyShm.cpp
+         Done compiling '/root/projects/ServerSeckey/SecKeyShm.cpp'
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/ServerSeckey/ServerOP.cpp -g2 -gdwarf-2 -o "/root/projects/ServerSeckey/obj/x64/Debug/ServerOP.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         ServerOP.cpp
+         Done compiling '/root/projects/ServerSeckey/ServerOP.cpp'
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/ServerSeckey/TcpServer.cpp -g2 -gdwarf-2 -o "/root/projects/ServerSeckey/obj/x64/Debug/TcpServer.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         TcpServer.cpp
+         Done compiling '/root/projects/ServerSeckey/TcpServer.cpp'
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/ServerSeckey/TcpSocket.cpp -g2 -gdwarf-2 -o "/root/projects/ServerSeckey/obj/x64/Debug/TcpSocket.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         TcpSocket.cpp
+         Done compiling '/root/projects/ServerSeckey/TcpSocket.cpp'
+         /root/projects/ServerSeckey/RsaCrypto.cpp: 在成员函数‘void RsaCrypto::parseKeyString(std::string, bool)’中:
+         /root/projects/ServerSeckey/RsaCrypto.cpp:39:56: 警告：‘int’转换自‘std::basic_string<char>::size_type {aka long unsigned int}’时可能改变值 [-Wconversion]
+           BIO* bio = BIO_new_mem_buf(keystr.data(), keystr.size());
+                                                                 ^
+         /root/projects/ServerSeckey/RsaCrypto.cpp: 在成员函数‘void RsaCrypto::generateRsakey(int, std::string, std::string)’中:
+         /root/projects/ServerSeckey/RsaCrypto.cpp:68:18: 警告：计算出的值未被使用 [-Wunused-value]
+           BIO_flush(pubIO);
+                           ^
+         /root/projects/ServerSeckey/RsaCrypto.cpp:75:19: 警告：计算出的值未被使用 [-Wunused-value]
+           BIO_flush(priBio);
+                            ^
+         /root/projects/ServerSeckey/RsaCrypto.cpp: 在成员函数‘std::string RsaCrypto::rsaPubKeyEncrypt(std::string)’中:
+         /root/projects/ServerSeckey/RsaCrypto.cpp:125:41: 警告：‘int’转换自‘std::basic_string<char>::size_type {aka long unsigned int}’时可能改变值 [-Wconversion]
+           int ret = RSA_public_encrypt(data.size(), (const unsigned char*)data.data(),
+                                                  ^
+         /root/projects/ServerSeckey/RsaCrypto.cpp: 在成员函数‘std::string RsaCrypto::rsaSign(std::string, SignLevel)’中:
+         /root/projects/ServerSeckey/RsaCrypto.cpp:175:73: 警告：‘unsigned int’转换自‘std::basic_string<char>::size_type {aka long unsigned int}’时可能改变值 [-Wconversion]
+           int ret = RSA_sign(level, (const unsigned char*)data.data(), data.size(), (unsigned char*)signBuf,
+                                                                                  ^
+         /root/projects/ServerSeckey/RsaCrypto.cpp: 在成员函数‘bool RsaCrypto::rsaVerify(std::string, std::string, SignLevel)’中:
+         /root/projects/ServerSeckey/RsaCrypto.cpp:192:75: 警告：‘unsigned int’转换自‘std::basic_string<char>::size_type {aka long unsigned int}’时可能改变值 [-Wconversion]
+           int ret = RSA_verify(level, (const unsigned char*)data.data(), data.size(),
+                                                                                    ^
+         /root/projects/ServerSeckey/RsaCrypto.cpp: 在成员函数‘std::string RsaCrypto::toBase64(const char*, int)’中:
+         /root/projects/ServerSeckey/RsaCrypto.cpp:213:17: 警告：计算出的值未被使用 [-Wunused-value]
+           BIO_flush(bs64);
+                          ^
+         /root/projects/ServerSeckey/RsaCrypto.cpp: 在成员函数‘char* RsaCrypto::fromBase64(std::string)’中:
+         /root/projects/ServerSeckey/RsaCrypto.cpp:224:24: 警告：‘int’转换自‘std::basic_string<char>::size_type {aka long unsigned int}’时可能改变值 [-Wconversion]
+           int length = str.size();
+                                 ^
+         /root/projects/ServerSeckey/SecKeyShm.cpp: 在构造函数‘SecKeyShm::SecKeyShm(int, int)’中:
+         /root/projects/ServerSeckey/SecKeyShm.cpp:7:25: 警告：‘int’转换自‘long unsigned int’时可能改变值 [-Wconversion]
+           : BaseShm(key, maxNode * sizeof(NodeSecKeyInfo))
+                                  ^
+         /root/projects/ServerSeckey/SecKeyShm.cpp: 在构造函数‘SecKeyShm::SecKeyShm(std::string, int)’中:
+         /root/projects/ServerSeckey/SecKeyShm.cpp:13:30: 警告：‘int’转换自‘long unsigned int’时可能改变值 [-Wconversion]
+           : BaseShm(pathName, maxNode * sizeof(NodeSecKeyInfo))
+                                       ^
+         /root/projects/ServerSeckey/SecKeyShm.cpp: 在成员函数‘NodeSecKeyInfo SecKeyShm::shmRead(std::string, std::string)’中:
+         /root/projects/ServerSeckey/SecKeyShm.cpp:86:6: 警告：未使用的变量‘ret’ [-Wunused-variable]
+           int ret = 0;
+               ^
+         /root/projects/ServerSeckey/ServerOP.cpp: 在构造函数‘ServerOP::ServerOP(std::string)’中:
+         /root/projects/ServerSeckey/ServerOP.cpp:30:30: 警告：‘short unsigned int’转换自‘Json::Value::Int {aka int}’时可能改变值 [-Wconversion]
+           m_port = root["Port"].asInt();
+                                       ^
+         /root/projects/ServerSeckey/ServerOP.cpp: 在成员函数‘std::string ServerOP::getRandKey(ServerOP::KeyLen)’中:
+         /root/projects/ServerSeckey/ServerOP.cpp:162:17: 警告：‘unsigned int’转换自‘time_t {aka long int}’时可能改变值 [-Wconversion]
+           srand(time(NULL));
+                          ^
+         /root/projects/ServerSeckey/ServerOP.cpp:165:13: 警告：不建议使用从字符串常量到‘char*’的转换 [-Wwrite-strings]
+           char *cs = "~!@#$%^&*()_+}{|\';[]";
+                      ^
+         /root/projects/ServerSeckey/TcpSocket.cpp: 在成员函数‘int TcpSocket::sendMsg(std::string, int)’中:
+         /root/projects/ServerSeckey/TcpSocket.cpp:75:33: 警告：‘int’转换自‘std::basic_string<char>::size_type {aka long unsigned int}’时可能改变值 [-Wconversion]
+            int dataLen = sendData.size() + 4;
+                                          ^
+         /root/projects/ServerSeckey/TcpSocket.cpp:85:36: 警告：‘uint32_t {aka unsigned int}’转换自‘std::basic_string<char>::size_type {aka long unsigned int}’时可能改变值 [-Wconversion]
+            int netlen = htonl(sendData.size());
+                                             ^
+         /root/projects/ServerSeckey/TcpSocket.cpp: 在成员函数‘int TcpSocket::readn(void*, int)’中:
+         /root/projects/ServerSeckey/TcpSocket.cpp:407:17: 警告：‘int’转换自‘size_t {aka long unsigned int}’时可能改变值 [-Wconversion]
+             return count - nleft;
+                          ^
+         
+       Link:
+         Linking objects
+         Invoking 'ld'
+         g++ -o "/root/projects/ServerSeckey/bin/x64/Debug/ServerSeckey.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /root/projects/ServerSeckey/obj/x64/Debug/BaseShm.o /root/projects/ServerSeckey/obj/x64/Debug/Codec.o /root/projects/ServerSeckey/obj/x64/Debug/CodecFactory.o /root/projects/ServerSeckey/obj/x64/Debug/Hash.o /root/projects/ServerSeckey/obj/x64/Debug/main.o /root/projects/ServerSeckey/obj/x64/Debug/Message.pb.o /root/projects/ServerSeckey/obj/x64/Debug/OCCIOP.o /root/projects/ServerSeckey/obj/x64/Debug/RequestCodec.o /root/projects/ServerSeckey/obj/x64/Debug/RequestFactory.o /root/projects/ServerSeckey/obj/x64/Debug/RespondCodec.o /root/projects/ServerSeckey/obj/x64/Debug/RespondFactory.o /root/projects/ServerSeckey/obj/x64/Debug/RsaCrypto.o /root/projects/ServerSeckey/obj/x64/Debug/SecKeyShm.o /root/projects/ServerSeckey/obj/x64/Debug/ServerOP.o /root/projects/ServerSeckey/obj/x64/Debug/TcpServer.o /root/projects/ServerSeckey/obj/x64/Debug/TcpSocket.o -lpthread -ljson -lcrypto -lprotobuf -locci -lclntsh
+         Done linking, output file name: '/root/projects/ServerSeckey/bin/x64/Debug/ServerSeckey.out'
+         Copying file '/root/projects/ServerSeckey/bin/x64/Debug/ServerSeckey.out' to 'D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\bin\x64\Debug\ServerSeckey.out'
+         ServerSeckey.vcxproj -> D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\bin\x64\Debug\ServerSeckey.out
+       FinalizeBuildStatus:
+         正在删除文件“D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\obj\x64\Debug\ServerSeckey.tlog\unsuccessfulbuild”。
+         正在对“D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\obj\x64\Debug\ServerSeckey.tlog\ServerSeckey.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“D:\Videos\36期-项目1\day12 - 外联接口-项目总结\04-代码\ServerSeckey\ServerSeckey\ServerSeckey.vcxproj”(Build 个目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:43.18

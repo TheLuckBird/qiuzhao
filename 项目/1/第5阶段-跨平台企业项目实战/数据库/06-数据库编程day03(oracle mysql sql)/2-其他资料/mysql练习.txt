@@ -1,0 +1,158 @@
+
+库操作
+	创建数据库d1 并指定默认字符集为UTF8
+创建表
+	t1
+	( id 整形 
+	  name 可变字符串30长度
+	)
+修改表
+	添加一列email varchar(30)
+  
+	修改name 增加长度到40字符
+  
+	修改email 列重命名 到 address ，并且修改类型为 varchar(40)
+  
+	显示创建该表的sql语句
+
+	删除列address
+
+	修改表t1表名为T2，注意大小写
+
+	删除表T2
+
+
+表数据操作
+
+	首先创建表employee
+	create table employee(
+		id int,
+		name varchar(20),
+		sex int,
+		birthday date,
+		salary double,
+		entry_date date,
+		resume text
+	);
+	
+	添加数据
+	insert into employee values(1,'张三',1,'1983-04-27',15000,'2012-06-24','一个大牛');
+	insert into employee(id,name,sex,birthday,salary,entry_date,resume) values(2,'李四',1,'1984-02-22',10000,'2012-07-24','一个中牛');
+	insert into employee(id,name,sex,birthday,salary,entry_date,resume) values(3,'王五',0,'1985-08-28',7000,'2012-08-24','一个小虾');
+
+	
+	1 将所有员工薪水都增加500元。
+	
+	2 将王五的员工薪水修改为10000元，resume改为也是一个中牛
+	
+	3 查询员工的月薪以及年薪
+	
+	4 删除表中姓名为王五的记录
+	
+	5 删除表中所有记录
+	
+	6 使用truncate删除表中记录
+		
+综合查询：
+	创建学生表，记录学生的id、姓名、语文、英语、数学课程的成绩
+	create table student
+	(
+		id int,
+		name varchar(20),
+		chinese int,
+		english int,
+		math int
+	);
+	往表里边插入数据
+	insert into student(id,name,chinese,english,math) values(1, '黄真',80,85,90);
+	insert into student(id,name,chinese,english,math) values(2,'归辛树',90,95,95);
+	insert into student(id,name,chinese,english,math) values(3,'李寻欢',80,96,96);
+	insert into student(id,name,chinese,english,math) values(4,'叶开',81,97,85);
+	insert into student(id,name,chinese,english,math) values(5,'袁承志',85,84,90);
+	insert into student(id,name,chinese,english,math) values(6,'何红药',92,85,87);
+	insert into student(id,name,chinese,english,math) values(7,'何铁手',75,81,80);
+	insert into student(id,name,chinese,english,math) values(8,'夏雪宜',77,80,79);
+	insert into student(id,name,chinese,english,math) values(9,'任我行',95,85,85);
+	insert into student(id,name,chinese,english,math) values(10,'岳不群',94,85,84);
+
+	1.查询表中所有学生的信息
+	2.查询表中所有学生的姓名和对应的英语成绩
+	3.查询所有出现的英语成绩（去掉重复）
+	4.在所有学生英语分数上加10分特长分
+	5.统计每个学生的总分（要用别名）
+	6.查询姓名为何东的学生成绩
+	7.查询英语成绩大于90分的同学
+	8.查询英语分数在 85－95之间的同学
+	9.查询数学分数为84,90,91的同学
+	10.查询数学分>85，语文分>90的同学
+	11.对总分排序后输出，然后再按从高到低的顺序输出
+	12.对姓何的学生总成绩倒序输出
+	13.统计总分大于250的人数有多少？
+	14.求最高分和最低分
+	
+	--------------------------以上自主完成--------------------------------------
+
+	15.给学生表增加一列，class_id（班级） int类型
+
+	16.将学生id为1-5的修改class_id为1班，将学生id为6-10的修改class_id为2班
+	  一个语句修改完成。
+
+	17.求各个班英语的平均分 
+
+	18.求各个班的总成绩 
+
+	19.求总成绩大于1300的班级
+	
+	
+	
+	
+数据库的函数
+	用sql 求3+5*2表达式的值
+	
+	求昨天、今天、明天、明年今日
+
+	求下一分钟，下一小时（addtime函数实现）
+
+	使用字符串拼接，输出'hello'和 'mysql'拼接值
+	
+	输出'hello中国'字符串长度
+	
+	将当前日期以'dd-mm-yyyy' 形式转换成字符串输出
+
+	将字符串'31-01-2017' 以 'dd-mm-yyyy'形式转换回时间类型
+	
+	
+多表查询
+	创建scott方案（数据库）以及对应表
+	
+	查询员工号、姓名、部门编号、部门名称
+	
+	显示员工号，姓名，薪水，薪水级别
+	
+	显示部门编号、名称、人数
+	
+	显示员工姓名以及主管姓名
+	
+Top-N
+	查询emp表中工资前三名的员工信息
+	
+	查询emp表中工资排5-8名的员工信息
+
+
+
+
+表的约束
+	唯一
+	非空
+	主键（自增）
+	外键
+	
+	创建一个学生表：
+	(
+		id  	学生的id  数值型  作为主键,
+		name 	学生的姓名 字符串型 非空,
+		email   电子邮箱  字符串类型  唯一,
+		sex	  	性别	  字符串类型   只能填 '男' 或 '女',
+		deptno  学生所在部门号   以  dept表的deptno为外键参照
+	)
+		

@@ -1,0 +1,36 @@
+syntax = "proto3";//指定版本信息，不指定会报错
+
+import "info.proto"; //导入定义
+
+package tutorial; //package声明符
+
+message Person //message为关键字，作用为定义一种消息类型
+{
+	string name = 1;	//姓名
+	int32 id = 2;		//id
+	string email = 3; //邮件
+  
+	enum PhoneType //枚举消息类型
+	{
+		MOBILE = 0; //proto3版本中，首成员必须为0，成员不应有相同的值
+		HOME = 1;
+		WORK = 2;
+	}
+
+	message PhoneNumber 
+	{
+		string number = 1;
+		PhoneType type = 2;
+	}
+
+	repeated PhoneNumber phones = 4; //phones为数组
+	
+	//info定义在"info.proto"
+	//类型格式：包名.信息名
+	infopack.info tmp = 5; 
+}
+
+message AddressBook 
+{
+	repeated Person people = 1;
+}

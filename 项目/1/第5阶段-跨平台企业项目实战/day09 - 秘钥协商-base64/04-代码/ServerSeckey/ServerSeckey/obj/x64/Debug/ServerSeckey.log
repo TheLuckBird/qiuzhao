@@ -1,0 +1,124 @@
+﻿生成启动时间为 2019/9/3 12:15:33。
+     1>项目“D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerSeckey.vcxproj”在节点 2 上(Build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\obj\x64\Debug\ServerSeckey.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       _ValidateSources:
+         Validating sources
+       _CopySources:
+         Copying sources remotely to '192.168.237.131'
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\Codec.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\CodecFactory.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\Hash.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\main.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\Message.pb.cc', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\RequestCodec.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\RequestFactory.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\RespondCodec.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\RespondFactory.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\RsaCrypto.cpp', as it is up to date.
+         Copying file 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp' to '/home/robin/projects/ServerSeckey/ServerOP.cpp'
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\TcpServer.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\TcpSocket.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\Codec.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\CodecFactory.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\Hash.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\Message.pb.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\RequestCodec.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\RequestFactory.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\RespondCodec.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\RespondFactory.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\RsaCrypto.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\TcpServer.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\TcpSocket.h', as it is up to date.
+       _ValidateValidArchitecture:
+         Validating architecture
+         Current project architecture 'x64' is compatible with the remote system architecture 'x64' ('x64').
+       ClCompile:
+         Starting remote build
+         Compiling sources:
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\Codec.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\CodecFactory.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\Hash.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\main.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\Message.pb.cc', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\RequestCodec.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\RequestFactory.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\RespondCodec.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\RespondFactory.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\RsaCrypto.cpp', as it is up to date.
+         Invoking 'g++'
+         g++ -c -x c++ /home/robin/projects/ServerSeckey/ServerOP.cpp -g2 -gdwarf-2 -o "/home/robin/projects/ServerSeckey/obj/x64/Debug/ServerOP.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         ServerOP.cpp
+         /home/robin/projects/ServerSeckey/ServerOP.cpp: In constructor ‘ServerOP::ServerOP(std::__cxx11::string)’:
+         /home/robin/projects/ServerSeckey/ServerOP.cpp:30:9: warning: conversion to ‘short unsigned int’ from ‘Json::Value::Int {aka int}’ may alter its value [-Wconversion]
+           m_port = root["Port"].asInt();
+                  ^
+         /home/robin/projects/ServerSeckey/ServerOP.cpp: In member function ‘std::__cxx11::string ServerOP::getRandKey(ServerOP::KeyLen)’:
+         /home/robin/projects/ServerSeckey/ServerOP.cpp:126:13: warning: ISO C++ forbids converting a string constant to ‘char*’ [-Wwrite-strings]
+           char *cs = "~!@#$%^&*()_+}{|\';[]";
+                      ^
+         /home/robin/projects/ServerSeckey/ServerOP.cpp:133:39: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
+             randStr.append(1, 'a' + rand() % 26);
+                                                ^
+         /home/robin/projects/ServerSeckey/ServerOP.cpp:136:39: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
+             randStr.append(1, 'A' + rand() % 26);
+                                                ^
+         /home/robin/projects/ServerSeckey/ServerOP.cpp:139:39: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
+             randStr.append(1, '0' + rand() % 10);
+                                                ^
+         
+     1>D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(30,9): warning : conversion to ‘short unsigned int’ from ‘Json::Value::Int {aka int}’ may alter its value [-Wconversion]
+D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(30,9): warning :   m_port = root["Port"].asInt();
+D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(30,9): warning :          ^
+     1>D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(126,13): warning : ISO C++ forbids converting a string constant to ‘char*’ [-Wwrite-strings]
+D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(126,13): warning :   char *cs = "~!@#$%^&*()_+}{|\';[]";
+D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(126,13): warning :              ^
+     1>D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(133,39): warning : conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
+D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(133,39): warning :     randStr.append(1, 'a' + rand() % 26);
+D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(133,39): warning :                                        ^
+     1>D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(136,39): warning : conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
+D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(136,39): warning :     randStr.append(1, 'A' + rand() % 26);
+D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(136,39): warning :                                        ^
+     1>D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(139,39): warning : conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
+D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(139,39): warning :     randStr.append(1, '0' + rand() % 10);
+D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(139,39): warning :                                        ^
+         Done compiling '/home/robin/projects/ServerSeckey/ServerOP.cpp'
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\TcpServer.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\TcpSocket.cpp', as it is up to date.
+       Link:
+         Linking objects
+         Invoking 'ld'
+         g++ -o "/home/robin/projects/ServerSeckey/bin/x64/Debug/ServerSeckey.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /home/robin/projects/ServerSeckey/obj/x64/Debug/Codec.o /home/robin/projects/ServerSeckey/obj/x64/Debug/CodecFactory.o /home/robin/projects/ServerSeckey/obj/x64/Debug/Hash.o /home/robin/projects/ServerSeckey/obj/x64/Debug/main.o /home/robin/projects/ServerSeckey/obj/x64/Debug/Message.pb.o /home/robin/projects/ServerSeckey/obj/x64/Debug/RequestCodec.o /home/robin/projects/ServerSeckey/obj/x64/Debug/RequestFactory.o /home/robin/projects/ServerSeckey/obj/x64/Debug/RespondCodec.o /home/robin/projects/ServerSeckey/obj/x64/Debug/RespondFactory.o /home/robin/projects/ServerSeckey/obj/x64/Debug/RsaCrypto.o /home/robin/projects/ServerSeckey/obj/x64/Debug/ServerOP.o /home/robin/projects/ServerSeckey/obj/x64/Debug/TcpServer.o /home/robin/projects/ServerSeckey/obj/x64/Debug/TcpSocket.o -lpthread -ljson -lcrypto -lprotobuf
+         Done linking, output file name: '/home/robin/projects/ServerSeckey/bin/x64/Debug/ServerSeckey.out'
+         Copying file '/home/robin/projects/ServerSeckey/bin/x64/Debug/ServerSeckey.out' to 'D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\bin\x64\Debug\ServerSeckey.out'
+         ServerSeckey.vcxproj -> D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\bin\x64\Debug\ServerSeckey.out
+       FinalizeBuildStatus:
+         正在删除文件“D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\obj\x64\Debug\ServerSeckey.tlog\unsuccessfulbuild”。
+         正在对“D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\obj\x64\Debug\ServerSeckey.tlog\ServerSeckey.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerSeckey.vcxproj”(Build 个目标)的操作。
+
+已成功生成。
+
+       “D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerSeckey.vcxproj”(Build 目标) (1) ->
+       (ClCompile 目标) -> 
+         D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(30,9): warning : conversion to ‘short unsigned int’ from ‘Json::Value::Int {aka int}’ may alter its value [-Wconversion]
+       D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(30,9): warning :   m_port = root["Port"].asInt();
+       D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(30,9): warning :          ^
+         D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(126,13): warning : ISO C++ forbids converting a string constant to ‘char*’ [-Wwrite-strings]
+       D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(126,13): warning :   char *cs = "~!@#$%^&*()_+}{|\';[]";
+       D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(126,13): warning :              ^
+         D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(133,39): warning : conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
+       D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(133,39): warning :     randStr.append(1, 'a' + rand() % 26);
+       D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(133,39): warning :                                        ^
+         D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(136,39): warning : conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
+       D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(136,39): warning :     randStr.append(1, 'A' + rand() % 26);
+       D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(136,39): warning :                                        ^
+         D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(139,39): warning : conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
+       D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(139,39): warning :     randStr.append(1, '0' + rand() % 10);
+       D:\Videos\36期-项目1\day09 - 秘钥协商-base64\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp(139,39): warning :                                        ^
+
+    5 个警告
+    0 个错误
+
+已用时间 00:00:04.09

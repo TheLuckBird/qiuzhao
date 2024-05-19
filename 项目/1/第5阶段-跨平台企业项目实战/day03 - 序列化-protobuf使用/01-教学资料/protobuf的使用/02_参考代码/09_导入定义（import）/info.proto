@@ -1,0 +1,9 @@
+syntax = "proto3";//指定版本信息，不指定会报错
+
+package infopack; //package声明符
+
+message info //message为关键字，作用为定义一种消息类型
+{
+	string addr = 1;	//地址
+	string group = 2; 	//分组
+}

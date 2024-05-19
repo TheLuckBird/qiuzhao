@@ -1,0 +1,61 @@
+create table student(id int,name varchar(20),chinese int,english int,math int);
+insert into student(id,name,chinese,english,math) values(1, '黄真',80,85,90);
+insert into student(id,name,chinese,english,math) values(2,'归辛树',90,95,95);
+insert into student(id,name,chinese,english,math) values(3,'李寻欢',80,96,96);
+insert into student(id,name,chinese,english,math) values(4,'叶开',81,97,85);
+insert into student(id,name,chinese,english,math) values(5,'袁承志',85,84,90);
+insert into student(id,name,chinese,english,math) values(6,'何红药',92,85,87);
+insert into student(id,name,chinese,english,math) values(7,'何铁手',75,81,80);
+insert into student(id,name,chinese,english,math) values(8,'夏雪宜',77,80,79);
+insert into student(id,name,chinese,english,math) values(9,'任我行',95,85,85);
+insert into student(id,name,chinese,english,math) values(10,'岳不群',94,85,84);
+
+1.查询表中所有学生的信息
+2.查询表中所有学生的姓名和对应的英语成绩
+3.查询所有出现的英语成绩（去掉重复）
+4.在所有学生英语分数上加10分特长分
+5.统计每个学生的总分（要用别名）
+6.查询姓名为何东的学生成绩
+7.查询英语成绩大于90分的同学
+8.查询英语分数在 85－95之间的同学
+9.查询数学分数为84,90,91的同学
+10.查询数学分>85，语文分>90的同学
+11.对总分排序后输出，然后再按从高到低的顺序输出
+12.对姓何的学生总成绩倒序输出
+13.统计总分大于250的人数有多少？
+14.求最高分和最低分
+
+15.给学生表增加一列，class_id（班级） int类型
+
+16.将学生id为1-5的修改为1班，将学生id为6-10的修改为2班
+  一个语句修改完成。
+update student set class_id=ceil(id/5);
+--求各个班英语的平均分 
+mysql> select avg(english),class_id from student group by class_id;
++--------------+----------+
+| avg(english) | class_id |
++--------------+----------+
+|      91.4000 |        1 |
+|      83.2000 |        2 |
++--------------+----------+
+
+--mysql group 语法检查不严格，仍然按照oracle的记忆
+mysql> select avg(english),class_id,id from student group by class_id;
++--------------+----------+------+
+| avg(english) | class_id | id   |
++--------------+----------+------+
+|      91.4000 |        1 |    1 |
+|      83.2000 |        2 |    6 |
++--------------+----------+------+
+--求各个班的总成绩 
+mysql> select sum(chinese+math+english),class_id from student group by class_id;
++---------------------------+----------+
+| sum(chinese+math+english) | class_id |
++---------------------------+----------+
+|                      1329 |        1 |
+|                      1264 |        2 |
++---------------------------+----------+
+
+--求总成绩大于1300的班级
+
+select sum(chinese+math+english),class_id from student group by class_id having sum(chinese+math+english)>1300;

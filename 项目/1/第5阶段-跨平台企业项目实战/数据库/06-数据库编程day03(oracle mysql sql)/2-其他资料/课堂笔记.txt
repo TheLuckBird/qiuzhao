@@ -1,0 +1,490 @@
+1. Oracle表
+	create table 表名
+	(
+		列名1 类型1,
+		列名2 类型2,
+		.....
+	)
+
+	1 创建表
+		创建一个员工表t1，员工号id（整数），和姓名name（字符串）
+		create table t1
+		(
+			id number,
+			name varchar2(30)
+		)
+		
+		
+		varchar (30)   -可变长    最长还是30，hello是5 ，最后存储只占用5个
+		char (30)   -定长         hello是5   ，最后存储还是占用30
+			char 比 varchar效率高
+		
+	2 修改表
+		alter table 表名 ....
+		alter table 表名 add 列名 类型
+		alter table 表名 rename column 列名 to 新列名
+		alter table 表名 modify 列名 新类型
+		alter table 表名 drop column 列名
+		
+		rename 表名 to 新表名  
+		
+		1 往t1表里边添加一列 email varchar(40)
+			alter table t1 add email varchar(40)   --oracle 里边 varchar 和 varchar2是同一个类型
+			
+		2 修改t1表email列名为address
+			alter table t1 rename column email to address
+			
+		3 修改t1表address列类型为varchar(50)
+			alter table t1 modify address varchar(50)
+			
+		4 删除t1表address列
+			alter table t1 drop column address
+			
+		5 修改t1表名为t2
+			rename t1 to t2
+		
+	3 另一种创建表的方式
+		create table 表名 as select 语句
+	
+		1 创建一张表emp2，数据跟emp表一样
+			create table emp2 as select * from emp   --备份
+		
+		2 创建一张表emp3，数据跟emp表一样，只有表结构，没有数据
+			create table emp3 as select * from emp
+			delete from emp3
+			
+			create table emp3 as select * from emp where 1=2  --返回是个空集，但是包括表结构
+			
+		
+	4 清空表
+		truncate table 表名
+		
+		truncate 和 delete 的区别
+		
+			delete 逐条删除表“内容”，truncate 先摧毁表再重建
+			
+	5 删除表
+	
+		drop table 表名
+		并没有马上删除表，而是放到了回收站里边recyclebin，这个回收站是oracle专有的
+		查看回收站
+			show recyclebin
+		恢复表
+			用到oracle的闪回技术 
+			flashback table 表名 to 某个时间段
+			flashback table 表名 to before drop
+			
+			
+			flashback table emp2 to before drop
+			
+		彻底干掉表
+			在回收站里边把表清掉
+			purge table 表名
+			purge recyclebin 清空回收站
+			
+			drop table 表名 purge   -- 彻底删除表
+			
+			
+	
+	6 表的约束
+		创建约束的方式
+		create table ...
+		(
+			列名 类型 [constraint 约束名] 约束的类型,
+			
+			constraint 约束名 约束类型(列名) 
+		)
+		
+		唯一
+			unique
+		非空	
+			not null
+		检查
+			check(cond)
+		主键
+			primary key
+		外键
+			references 表名(列名) [ on delete set null | cascade ]
+
+2 视图
+	create view 视图名称 
+	as
+		select 语句
+
+	1 创一个视图，用来观看10号部门的员工信息
+		select * from emp where deptno = 10
+		
+		抽出一个视图
+		create view v_emp_10 as select * from emp where deptno = 10
+		
+		使用视图——直接把视图当表使用就可以
+		视图只是一个查询语句的结果，本身没有数据
+		
+		视图的优点：
+			1 简化复杂查询
+			2 限制数据的访问
+		注意点：
+			1 视图不提高查询性能
+			2 不提倡修改视图的数据
+			
+	删除视图
+		drop view 视图名
+		
+		
+		
+3 序列
+
+	create table t1 
+	(
+		id number primary key,
+		name varchar2(30) 
+	)
+	insert into t1 values(1, 'aaa')
+	insert into t1 values(2, 'bbb')
+	insert into t1 values(3, 'ccc')
+	....
+	让程序自己记住主键值，下次自动加1——序列
+	
+	创建序列：
+		create sequence 序列名 
+		
+		create sequence myseq;
+	序列的使用 ：
+		序列名.currval --获取序列当前值
+		第 1 行出现错误:
+		ORA-08002: 序列 MYSEQ.CURRVAL 尚未在此会话中定义
+		
+		
+		结论：currval的使用不能早于第一次使用nextvalue
+		
+		
+		序列名.nextval --获取序列下一个值
+		
+		nextval 在一条sql里边只取一次
+		
+	删除序列
+		drop sequence 序列名
+	
+4 索引
+	原理：先按照某列，多列进行排序，记录好没行数据在主表的位置
+		查询的时候先查索引，然后再到主表上面去拿数据
+	创建索引
+		create index 索引名 on 表名(列名1,列名2...)
+		
+	使用索引：
+		其实我们只要创建索引和删除索引操作就行了，其他索引的管理数据库自动完成
+		
+		select * from emp where deptno = 10 
+		
+		select * from emp where job = ....  ---没有使用到索引
+		
+		
+		问题
+		创建索引 on emp( deptno , job)   
+		select * from emp where job = ....  ---没有使用到索引
+		select * from emp where job = ....   and deptno = ..  ---有使用到索引
+		
+		具有唯一约束的列，oracal都会自动创建索引（包括主键）
+		
+		
+		
+	删除索引
+		drop index 索引名
+		
+		
+		
+	查看用户的数据库对象
+		select * from user_数据库对象 
+		select * from user_indexes;
+	
+5 同义词
+	
+	1 为hr.employees表创建同义词
+		create synonym 同义词 for 数据库对象
+	
+	删除同义词
+		drop synonym 同义词
+		
+		
+		
+
+		
+6 mysql 的服务
+	service mysql start 启动
+	service mysql stop 停止
+	service mysql restart 重启
+	
+	
+	登录使用mysql客户端，命令就是mysql
+		直接用root用户
+	
+		mysql -u用户名 -p密码    --   密码 和 -p之间没有空格
+		mysql -u用户名 -p        --这种登录方式会提示你输入密码
+
+	退出：
+		exit   / quit / ctrl - D
+		
+		
+7 mysql体系结构
+	show databases 显示当前用户有什么数据库、方案
+	use 方案名     选择使用哪个方案
+	show tables    显示有什么表
+	
+	
+	oracle 里边用户名就是方案名
+	mysql里边 用户是用户，方案是方案，一个用可以有多个方案
+	
+	
+	
+
+8 库操作
+	create database|schema  方案名  default charset = ''
+	创建数据库d1 并指定默认字符集为UTF8
+		create schema  d1  default charset = 'UTF8'
+	
+	删库
+		drop database| schema 方案名
+	
+9 创建表
+	t1
+	( id 整形 
+	  name 可变字符串30长度
+	)
+	
+	
+	create table t1
+	(
+		id number,       --oracle 里边用number
+		name varchar2(30)
+	)
+	
+	create table t1
+	(
+		id int,      
+		name varchar(30)
+	)
+	
+10 修改表
+	alter table 表名 ....
+	alter table 表名 add 列名 类型
+	alter table 表名 modify 列名 类型
+	alter table 表名 change 列名 新列名 新类型
+	alter table 表名 drop column 列名
+	
+	rename 表名 to 新表名
+	
+	添加一列email varchar(30)
+		alter table t1 add email varchar(30)
+	
+	修改email 增加长度到40字符
+		alter table t1 modify email varchar(40)
+  
+	修改name 列重命名 到 address ，并且修改类型为 varchar(40)
+		alter table t1 change name address varchar(40)
+  
+	显示创建该表的sql语句
+		show craete table 表名
+
+	删除列address
+		alter table t1 drop column address
+
+	修改表t1表名为T2，注意大小写
+		rename table t1 to T2S
+			
+		mysql 里边 表名 和 数据库名大小写敏感
+
+	删除表T2
+		drop table 表名
+
+
+11 表数据操作
+
+	首先创建表employee
+	create table employee(
+		id int,
+		name varchar(20),
+		sex int,
+		birthday date,
+		salary double,
+		entry_date date,
+		resume text
+	);
+	
+	添加数据
+	insert into employee values(1,'张三',1,'1983-04-27',15000,'2012-06-24','一个大牛');
+	insert into employee(id,name,sex,birthday,salary,entry_date,resume) values(2,'李四',1,'1984-02-22',10000,'2012-07-24','一个中牛');
+	insert into employee(id,name,sex,birthday,salary,entry_date,resume) values(3,'王五',0,'1985-08-28',7000,'2012-08-24','一个小虾');
+
+	
+	1 将所有员工薪水都增加500元。
+		update employee set salary = salary + 500 
+	
+	2 将王五的员工薪水修改为10000元，resume改为也是一个中牛
+		update employee set salary = 10000 , resume ='也是一个中牛' where name = '王五'
+	
+	3 查询员工的月薪以及年薪
+		select name , sal 月薪 , sal*12 年薪 from employee
+	
+	4 删除表中姓名为王五的记录
+		delete from employee where name = '王五'
+	
+	5 删除表中所有记录
+		delete from employee
+	
+	6 使用truncate删除表中记录
+		truncate table employee
+		
+12 综合查询：
+	创建学生表，记录学生的id、姓名、语文、英语、数学课程的成绩
+	create table student
+	(
+		id int,
+		name varchar(20),
+		chinese int,
+		english int,
+		math int
+	);
+	往表里边插入数据
+	insert into student(id,name,chinese,english,math) values(1, '黄真',80,85,90);
+	insert into student(id,name,chinese,english,math) values(2,'归辛树',90,95,95);
+	insert into student(id,name,chinese,english,math) values(3,'李寻欢',80,96,96);
+	insert into student(id,name,chinese,english,math) values(4,'叶开',81,97,85);
+	insert into student(id,name,chinese,english,math) values(5,'袁承志',85,84,90);
+	insert into student(id,name,chinese,english,math) values(6,'何红药',92,85,87);
+	insert into student(id,name,chinese,english,math) values(7,'何铁手',75,81,80);
+	insert into student(id,name,chinese,english,math) values(8,'夏雪宜',77,80,79);
+	insert into student(id,name,chinese,english,math) values(9,'任我行',95,85,85);
+	insert into student(id,name,chinese,english,math) values(10,'岳不群',94,85,84);
+
+	1.查询表中所有学生的信息
+	2.查询表中所有学生的姓名和对应的英语成绩
+	3.查询所有出现的英语成绩（去掉重复）
+	4.在所有学生英语分数上加10分特长分
+	5.统计每个学生的总分（要用别名）
+	6.查询姓名为何东的学生成绩
+	7.查询英语成绩大于90分的同学
+	8.查询英语分数在 85－95之间的同学
+	9.查询数学分数为84,90,91的同学
+	10.查询数学分>85，语文分>90的同学
+	11.对总分排序后输出，然后再按从高到低的顺序输出
+	12.对姓何的学生总成绩倒序输出
+	13.统计总分大于250的人数有多少？
+	14.求最高分和最低分
+	
+	--------------------------以上自主完成--------------------------------------
+
+	15.给学生表增加一列，class_id（班级） int类型
+		alter table student add class_id int
+
+	16.将学生id为1-5的修改class_id为1班，将学生id为6-10的修改class_id为2班
+	  一个语句修改完成。
+		update student set class_id = ceil(id/5) 
+
+	17.求各个班英语的平均分 
+		select class_id,avg(english)
+		from student
+		group by class_id
+		
+		
+		select class_id,name,avg(english)   --加多了一个name没有报错
+		from student
+		group by class_id
+		
+		mysql的group by 语法没有那么严谨  ——建议大家还是沿用oracle的做法
+			在select中出现的列，必须在goup by 中出现
+
+	18.求各个班的总成绩 
+		总成绩是 chinese + english + math
+		select class_id, sum(chinese + english + math) 总成绩
+		from student
+		group by class_id
+
+	19.求总成绩大于1300的班级
+		select class_id, sum(chinese + english + math) 总成绩
+		from student
+		group by class_id
+		having sum(chinese + english + math) > 1300
+	
+	
+		数据的CURD的SQL跟oracle一样
+	
+	
+13 数据库的函数
+	用sql 求3+5*2表达式的值
+		select 3+5*2 from dual
+		 select 3+5*2 ;  --mysql 可以不使用dual 直接求出表达式的值
+	
+	求昨天、今天、明天、明年今日
+		sysdate  在mysql中不存在，使用now()代替
+		
+		select now()-1 昨天 , now() 今天 , now() +1 明天;   --时间+-1单位是秒
+		
+		select date_sub(now() , interval 1 day ) 昨天,
+				now() 今天
+				date_add(now() , interval 1 day ) 明天,
+				date_add(now() , interval 1 year ) 明年今日;
+
+	求下一分钟，下一小时（addtime函数实现）
+	
+		select addtime(now() , 1) ;
+		select addtime(now() , 60) ;  --NULL
+		addtime ( now() , '0:1:0')
+
+	使用字符串拼接，输出'hello'和 'mysql'拼接值
+		select 'hello' || 'mysql'   --拼接字符串不能使用||
+		select concat( 'hello' ,'mysql')
+	
+	输出'hello中国'字符串长度
+		length ( 字符串 ) 
+		select length ( 'hello中国')  --  11   utf 8 中文占用3个字节
+	
+	将当前日期以'dd-mm-yyyy' 形式转换成字符串输出
+		to_char  --mysql 没有to_char
+		使用date_format(date,‘格式字符串')
+		select date_format(now(),'%d-%m-%Y')
+		
+		
+		
+	将字符串'31-01-2017' 以 'dd-mm-yyyy'形式转换回时间类型
+		to_date    --mysql 没有
+		select str_to_date('20-12-2017' , '%d-%m-%Y')
+	
+	
+多表查询
+	创建scott方案（数据库）以及对应表
+	
+	查询员工号、姓名、部门编号、部门名称
+	
+	显示员工号，姓名，薪水，薪水级别
+	
+	显示部门编号、名称、人数
+	
+	显示员工姓名以及主管姓名
+	
+Top-N
+	查询emp表中工资前三名的员工信息
+	
+	查询emp表中工资排5-8名的员工信息
+
+
+
+
+表的约束
+	唯一
+	非空
+	主键（自增）
+	外键
+	
+	创建一个学生表：
+	(
+		id  	学生的id  数值型  作为主键（自增）,
+		name 	学生的姓名 字符串型 非空,
+		email   电子邮箱  字符串类型  唯一,
+		sex	  	性别	  字符串类型   只能填 '男' 或 '女',
+		deptno  学生所在部门号   以  dept表的deptno为外键参照
+	)
+		
+		
+insert into emp values(1,'张三',1,'1983-04-27',15000,'2012-06-24','一个大牛');
+insert into emp(id,name,sex,birthday,salary,entry_date,resume) values(2,'李四',1,'1984-02-22',10000,'2012-07-24','一个中牛');
+insert into emp(id,name,sex,birthday,salary,entry_date,resume) values(3,'王五',0,'1985-08-28',7000,'2012-08-24','一个小虾');

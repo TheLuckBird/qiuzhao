@@ -1,0 +1,9 @@
+//指定版本信息，不指定会报错
+syntax = "proto3";
+
+message Person //message为关键字，作用为定义一种消息类型
+{
+  string name = 1;	//姓名
+  int32 id = 2;		//id
+  string email = 3; //邮件
+}

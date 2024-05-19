@@ -1,0 +1,220 @@
+
+Centos7.5环境  
+Oracle版本: 11G
+Linux下一些用户:
+	deng	123456
+	oracle	123456
+	root	123456
+
+前提条件: 使用Oracle用户登录Linux操作系统
+[deng@localhost ~]$ su - oracle
+
+数据库管理员用户:
+	用户名:sys
+	密	码:sys
+	
+	
+1. Oracle数据库启动
+
+	第一步: 通过数据库管理员登录Oracle数据库
+	[oracle@localhost ~]$ sqlplus / as sysdba;
+
+	
+	第二步: 启动Oracle数据库
+	SQL> startup
+	ORACLE instance started.
+
+	Total System Global Area  826753024 bytes
+	Fixed Size		    2217872 bytes
+	Variable Size		  524290160 bytes
+	Database Buffers	  293601280 bytes
+	Redo Buffers		    6643712 bytes
+	Database mounted.
+	Database opened.
+	SQL> 
+
+	第三步: 启动监听服务
+	SQL> quit
+	[oracle@localhost ~]$ lsnrctl start
+
+
+2. Oracle数据库关闭
+
+	
+	第一步: 通过数据库管理员登录Oracle数据库
+	[oracle@localhost ~]$ sqlplus / as sysdba;
+	
+	第二步: 关闭Oracle数据
+	SQL> shutdown immediate
+	Database closed.
+	Database dismounted.
+	ORACLE instance shut down.
+	SQL> 
+
+	第三步: 关闭监听服务
+	SQL> quit
+	[oracle@localhost ~]$ lsnrctl stop 
+
+3. sqlplus登录Oracle数据库
+
+	前提条件是Oracle数据库必须启动
+	
+	3.1 使用sqlplus登录Oracle数据库
+	[oracle@localhost ~]$ sqlplus 
+	Enter user-name: scott
+	Enter password: 
+	
+	3.2 使用sqlplus登录Oracle数据库
+	[oracle@localhost ~]$ sqlplus  scott/11
+
+	3.3 远程登录
+	格式: sqlplust 用户名/密码@//IP地址/实例名
+	[oracle@localhost admin]$ sqlplus scott/11@//192.168.16.46/orcl
+
+	3.4 解锁用户
+	[oracle@localhost admin]$ sqlplus / as sysdba
+	SQL> alter user scott account unlock;
+	
+	3.5 修改用户密码
+	SQL> alter user scott identified by 11;
+	User altered.
+
+	3.6 查看当前语言环境
+	SQL> select userenv('language') from dual;
+
+	USERENV('LANGUAGE')
+	----------------------------------------------------
+	AMERICAN_AMERICA.WE8MSWIN1252
+
+	SQL> 
+
+4. sqlplus基本操作
+
+	前提条件是使用scott用户登录
+	[oracle@localhost ~]$ sqlplus scott/11
+
+
+	4.1 显示当前用户
+	SQL> show user 
+	USER is "SCOTT"
+	SQL> 
+
+	4.2 查看当前用户下的表
+	SQL> select * from tab;
+
+	TNAME			       TABTYPE	CLUSTERID
+	------------------------------ ------- ----------
+	BONUS			       TABLE
+	DEPT			       TABLE
+	EMP			       TABLE
+	SALGRADE		       TABLE
+
+	4.3 查看员工表的结构
+	SQL> desc emp;
+
+	4.4 设置行宽
+	SQL> set linesize 140
+
+	4.5 设置页大小
+	SQL> set pagesize 100
+
+	4.6 设置员工ename的列宽
+	SQL> col ename for a8
+	
+	4.7 设置薪水的列宽
+	SQL> col sal for 9999
+
+	
+5. scott方案
+
+	grade: 薪水等级
+	losal: 最低薪水
+	hisal: 最高薪水
+	
+	SQL> select * from salgrade ;
+
+		 GRADE	LOSAL	   HISAL
+	---------- ---------- ----------
+		 1	  700	    1200
+		 2	 1201	    1400
+		 3	 1401	    2000
+		 4	 2001	    3000
+		 5	 3001	    9999
+		 
+		 
+	deptno: 部门编号
+	dname: 部门名称
+	loc: 部门位置
+	SQL> select * from dept;
+
+		DEPTNO DNAME	  LOC
+	---------- -------------- -------------
+		10 ACCOUNTING	  NEW YORK
+		20 RESEARCH	  DALLAS
+		30 SALES	  CHICAGO
+		40 OPERATIONS	  BOSTON
+		 3 3NAME	  3loc
+		 5 5name	  5loc
+
+	6 rows selected.
+
+	empno: 员工编号
+	ename: 员工姓名
+	job:   员工工种
+	mgr:   员工上司
+	hiredate: 雇佣日期
+	sal:	员工薪水
+	comm: 员工奖金
+	deptno: 员工部门编号
+	
+	SQL> select * from emp;
+
+     EMPNO ENAME    JOB 	     MGR HIREDATE    SAL       COMM	DEPTNO
+	---------- -------- --------- ---------- --------- ----- ---------- ----------
+      7369 SMITH    CLERK	    7902 17-DEC-80   800		    20
+      7499 ALLEN    SALESMAN	    7698 20-FEB-81  1600	300	    30
+      7521 WARD     SALESMAN	    7698 22-FEB-81  1250	500	    30
+      7566 JONES    MANAGER	    7839 02-APR-81  2975		    20
+      7654 MARTIN   SALESMAN	    7698 28-SEP-81  1250       1400	    30
+      7698 BLAKE    MANAGER	    7839 01-MAY-81  2850		    30
+      7782 CLARK    MANAGER	    7839 09-JUN-81  2450		    10
+      7788 SCOTT    ANALYST	    7566 19-APR-87  3000		    20
+      7839 KING     PRESIDENT		 17-NOV-81  5000		    10
+      7844 TURNER   SALESMAN	    7698 08-SEP-81  1500	  0	    30
+      7876 ADAMS    CLERK	    7788 23-MAY-87  1100		    20
+      7900 JAMES    CLERK	    7698 03-DEC-81   950		    30
+      7902 FORD     ANALYST	    7566 03-DEC-81  3000		    20
+      7934 MILLER   CLERK	    7782 23-JAN-82  1300		    10
+
+	
+6. 设置Oracle服务端的字符集
+
+	设置数据库字符集
+	SQL> conn /as sysdba;
+	SQL> shutdown immediate;
+	SQL> startup mount;
+	SQL> alter system enable restricted session;
+	SQL> alter system set job_queue_processes=0;
+	SQL> alter system set aq_tm_processes=0;
+	SQL> alter database open;
+	SQL> alter database character set internal_use ZHS16GBK;
+	SQL> alter system set nls_language = 'AMERICAN' scope = spfile;
+	SQL> alter system set nls_territory = 'AMERICA' scope = spfile;
+	SQL> shutdown immediate;
+	SQL> startup;
+
+	修改之后的结果是:
+	SQL> select userenv('language') from dual;
+
+	USERENV('LANGUAGE')
+	----------------------------------------------------
+	AMERICAN_AMERICA.ZHS16GBK
+	
+	NLS_LANG环境变量是oralce客户端字符集配置
+    [oracle@deng ~]$ export NLS_LANG="AMERICAN_AMERICA.ZHS16GBK"
+
+
+
+
+
+

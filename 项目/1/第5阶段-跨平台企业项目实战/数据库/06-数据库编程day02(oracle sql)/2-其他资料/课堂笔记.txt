@@ -1,0 +1,697 @@
+1 多表查询：
+	要查的数据在多个表里边
+	select ...
+	from tab1,tab2,...
+	使用笛卡尔积
+
+	1 查询员工信息：员工号，姓名，月薪(emp)和部门名称(dept)
+		select empno , ename , sal , emp.deptno ,dept.deptno  ,dname
+		from emp , dept
+		where emp.deptno = dept.deptno
+		
+		表的别名
+		select empno , ename , sal , e.deptno ,d.deptno  ,dname
+		from emp e, dept d
+		where e.deptno = d.deptno
+		
+		起名表的连接，有连接条件，就是where的条件
+		
+		等值连接：where条件里边使用等号
+		
+		另一种方式查询，使用join on  ——sql的标准
+			用法：将from里边的逗号换成join ，将where换成on
+		select empno , ename , sal , e.deptno ,d.deptno  ,dname
+		from emp e join dept d
+		on e.deptno = d.deptno
+		
+		
+
+	2 查询员工信息：员工号，姓名，月薪(emp)和月薪级别（salgrade表）
+		不等值连接
+	
+		select empno,ename , sal , grade , losal,hisal
+		from emp, salgrade
+		where sal between losal and hisal
+	
+		换成join
+		select empno,ename , sal , grade , losal,hisal
+		from emp join salgrade
+		on sal between losal and hisal
+
+	3 按部门统计员工人数，显示如下信息：部门号，部门名称(dept)，人数(emp)（注意统计40号部门）
+		涉及到group by 
+		select d.deptno,dname,count(*)
+		from dept d , emp e
+		where d.deptno = e.deptno
+		group by d.deptno,dname
+		
+		使用外连接：要显示没有通过筛选条件的数据的时候就要使用外连接
+		使用方式：想保留哪一张表的数据，就在where条件等号的另一边使用(+)
+		select d.deptno,dname,count(*)     --不能用count(*)因为外连接，emp表没有数据会置空，但是count(*)还是会统计
+		from dept d , emp e
+		where d.deptno = e.deptno(+)
+		group by d.deptno,dname
+		
+		
+		
+		修改一下：
+		select d.deptno,dname,count(empno)  
+		from dept d , emp e
+		where d.deptno = e.deptno(+)
+		group by d.deptno,dname
+		    DEPTNO DNAME          COUNT(EMPNO)
+		---------- -------------- ------------
+				10 ACCOUNTING                3
+				20 RESEARCH                  5
+				30 SALES                     6
+				40 OPERATIONS                0
+				
+		外连接还分两种：
+			左外连接：想保留左边表的数据，在where等号右边使用（+）
+			右外连接：想保留右边表的数据，在where等号左边使用（+）
+			
+		换成join on 
+			[inner] join  --默认情况下是内连接
+			left [outer] join | right [outer] join |full join
+			
+			select d.deptno,dname,count(empno)  
+			from dept d left join emp e
+			on d.deptno = e.deptno
+			group by d.deptno,dname
+			
+	4 查询员工信息：员工号，姓名，月薪(emp)和部门名称(dept) ，以及工资等级（salgrade）
+		涉及三个表
+		select e.empno , e.ename , sal , dname , grade
+		from emp e, dept d , salgrade
+		where e.deptno = d.deptno 
+			and e.sal between losal and hisal
+	
+2 自连接：
+	自己跟自己做多表连接
+	数据在同一张表里边，并不在同一行
+
+	查询员工信息：将员工的主管名字也显示出来（KING的主管是他自己）
+		select a.empno , a.ename , a.mgr , b.empno , b.ename
+		from emp a , emp b
+		where a.mgr = b.empno
+		
+		改成输出字符串：a's manager is b
+		
+		select  a.ename|| '''s manager is ' || nvl(b.ename,'his wife')
+		from emp a , emp b
+		where a.mgr = b.empno(+)
+3 子查询：
+	嵌套查询，就是在一个select 语句里边再嵌套其他select语句
+	
+	1 查询比scott工资高的员工信息 
+		第一步：先查询scott的工资
+			select sal from emp where ename = 'SCOTT'
+		第二步：查询比他工资高的
+			select * from emp where sal > 3000
+		
+		使用子查询
+		select * 
+		from emp 
+		where sal > 
+		(
+			--查询scott的工资
+			select sal 
+			from emp 
+			where ename = 'SCOTT'
+		)
+	
+
+	注意事项
+	* 注意书写风格
+	* 父查询和子查询可以是不同的表，子查询返回的结果父查询可以使用即可
+		查询部门名称是 'SALES' 的员工信息
+			第一步：先查出 sales的部门号
+			第二步：查出相应的员工信息
+				select * 
+				from emp
+				where deptno = 
+				(
+					--sales的部门号
+					select deptno
+					from dept
+					where dname = 'SALES'
+				)
+	 
+	* 父查询的select、from、where、having都可以嵌套子查询
+		select ...
+		from ...
+		where ...
+		group by ...   --不可以
+		having ...
+		order by ...   --不可以
+
+		select 后置子查询：查询10号部门的员工号、员工姓名、部门编号（emp）、部门名称（dept）
+			1 先查出10好部门的员工信息
+				select * from emp where deptno = 10
+			2 查出10号部门的部门名称
+				select dname from dept where deptno = 10
+				
+			select emp.*,
+			(
+				select dname from dept where deptno = 10
+			)
+			from emp
+			where deptno = 10
+
+		from 后置子查询： 查询员工的姓名、月薪和年薪（使用select * from _________)
+			select * from
+			(
+				select ename , sal 月薪 , sal*12 年薪 
+				from emp 
+			)
+
+		where后置子查询： 查询与ward相同岗位并且月薪比他高的员工信息
+			第一步：查出ward的岗位
+			第二步：查出ward的月薪
+			第三步：查询与ward相同岗位并且月薪比他高的员工信息
+			
+			子查询
+			select *
+			from emp
+			where job =
+			(
+				--查出ward的岗位
+				select job
+				from emp
+				where ename = 'WARD'
+				
+			)
+				and sal > 
+			(
+				--ward 月薪
+				select sal
+				from emp
+				where ename = 'WARD'
+			)
+			
+			结论：一个查询里边可以嵌套多个子查询
+
+		having后置子查询：查询部门最低月薪高于30号部门的部门以及其最低月薪
+			1 在部门里边统计最低月薪
+			2 查询比30号部门最低月薪的部门
+			
+			select deptno , min(sal)
+			from emp
+			group by deptno 
+			having min(sal)>
+			(
+				--30号部门的最低月薪
+				select min(sal)
+				from emp
+				where deptno = 30
+				group by deptno 
+			)
+
+	* 单行子查询只能使用单行操作符，多行子查询只能使用多行操作符 （这里都是指单列）
+		单行操作符，就是对某个单一数据的比较操作
+		=|>|>=|<|<=等
+		
+	* 多行操作符，就是对一个集合的比较操作(IN、ANY、ALL)
+	 
+		查询部门名称为SALES和ACCOUNTING的员工信息 (IN)
+			in 就是判断某个值在集合里边和某个值相等
+			select *
+			from emp
+			where deptno in
+			(
+				--查出sales 和 accounting 的部门号
+				select deptno 
+				from dept
+				where dname = 'SALES' or dname = 'ACCOUNTING'
+			)
+		
+		查询月薪比30号部门任意一个（某一个any）员工高的员工信息
+			只要比30号部门的某个员工工资高就可以了
+			只要高于30号部门最低工资
+			select * 
+			from emp
+			where sal >
+			(
+				--30号部门的最低工资
+				select min(sal)
+				from emp
+				where deptno = 30
+				group by deptno
+			)
+			
+			select *
+			from emp
+			where sal > any
+			(
+				--30号部门的员工工资
+				select sal
+				from emp
+				where deptno = 30
+			)
+		
+		查询比30号部门所有员工工资都高的员工信息
+			select *
+			from emp
+			where sal > all
+			(
+				--30号部门的员工工资
+				select sal
+				from emp
+				where deptno = 30
+			)
+		
+		
+	* 注意子查询中返回的null值影响最终计算结果
+	
+		查询不是主管的员工信息
+			第一步：查询是主管的员工号
+			第二步：查询不在这堆员工号的员工信息
+			
+			select *
+			from emp
+			where empno not in
+			(
+				--查出所有主管工号
+				select mgr
+				from emp
+				where mgr is not null
+			)
+		
+	* SQL解析：一般先执行子查询（内查询），再执行父查询（外查询）；关联子查询除外
+	
+	
+	
+4 课堂练习：
+	1 找到员工表中工资最高的前三名， 要求按如下格式输出
+		使用rownum 
+			select rownum,emp.* from emp order by sal desc;
+			--得出结论：rownum的生成比排序早
+		select rownum , e.empno,ename,sal
+		from 
+		(
+			--已经排序好的emp表
+			select * 
+			from emp
+			order by sal desc
+		) e 
+		where rownum <= 3
+			
+			
+			
+		select rownum , e.empno,ename,sal
+		from 
+		(
+			--已经排序好的emp表
+			select * 
+			from emp
+			order by sal desc
+		) e 
+		where rownum >= 5 and rownum <=8
+		
+		查<=3的
+		1 king    判断where 条件 通过
+		2 scott   判断where 条件 通过
+		
+		查>=5的
+		1 king    判断where 条件 不通过
+		1 scott   判断where 条件 不通过
+		1 smith   判断where 条件 不通过
+		
+		rownum产生在where条件判断前一刻，如果where条件将数据筛掉，rownum重复使用
+		
+		//再嵌套多一层子查询
+		select *
+		from
+		(
+			select rownum r, e.empno,ename,sal
+			from 
+			(
+				--已经排序好的emp表
+				select * 
+				from emp
+				order by sal desc
+			) e 
+		)
+		where r >= 5 and r <=8
+		
+	2 找到emp表中薪水大于本部门平均薪水的员工
+		第一步：查出每个部门的平均薪水
+			select deptno ,avg(sal) avg_sal
+			from emp
+			group by deptno
+			
+			    DEPTNO   AVG(SAL)
+			---------- ----------
+					30 1566.66667
+					20       2175
+					10 2916.66667
+					
+		第二步：找到emp表中薪水大于本部门平均薪水的员工
+	
+			做表连接
+			
+			
+			select *
+			from emp e,
+			(
+				select deptno ,avg(sal) avg_sal
+				from emp
+				group by deptno
+			) d
+			where e.deptno = d.deptno
+				and e.sal > d.avg_sal
+				
+				
+		使用关联子查询最简单
+			特点：子查询不能够独立运行，要依赖父查询
+			select *
+			from emp e
+			where sal >
+			(
+				--本部门平均薪水
+				select avg(sal)
+				from emp
+				where deptno = e.deptno
+				group by deptno
+			)
+			
+		原理：一般先执行子查询（内查询），再执行父查询（外查询）；关联子查询除外
+		
+			关联子查询在父查询每次where条件判断的时候都会执行一次查询
+			
+			效率很低
+	
+	
+	3 统计每年入职的员工个数
+		group by
+		1980  n
+		1981  m
+		
+		首先将入职日期变成年份——to_char(yyyy)
+			select to_char(hiredate,'yyyy') hire_year
+			from emp
+		第二步，将年份变成相应的1或者0
+		select 
+			case (hire_year) when '1980' then 1 else 0 end  "1980",
+			case (hire_year) when '1981' then 1 else 0 end  "1981",
+			case (hire_year) when '1982' then 1 else 0 end  "1982",
+			case (hire_year) when '1987' then 1 else 0 end  "1987"
+			from
+			(
+				select to_char(hiredate,'yyyy') hire_year
+				from emp
+			)
+			
+		第三步，汇总和统计
+			select count(*) total ,
+					sum("1980"),
+					sum("1981"),
+					sum("1982"),
+					sum("1987")
+			from 
+			(
+				select 
+				case (hire_year) when '1980' then 1 else 0 end  "1980",
+				case (hire_year) when '1981' then 1 else 0 end  "1981",
+				case (hire_year) when '1982' then 1 else 0 end  "1982",
+				case (hire_year) when '1987' then 1 else 0 end  "1987"
+				from
+				(
+					select to_char(hiredate,'yyyy') hire_year
+					from emp
+				)
+			)
+			
+	
+5 集合运算：
+	union / union all 并集
+	intersect 交集
+	minus  差集
+
+	1 部门号是10的员工和部门号是20的员工信息做并集（以及全并集）
+		select * 
+		from emp
+		where deptno = 10
+		
+		union
+		
+		select * 
+		from emp
+		where deptno = 20	
+		
+		全并集
+		select * 
+		from emp
+		where deptno = 10
+		
+		union all
+		
+		select * 
+		from emp
+		where deptno in (10, 20)	
+
+	2 用10号部门的员工信息和 10,20号部门的员工信息做交集
+		select * 
+		from emp
+		where deptno = 10
+		
+		intersect
+		
+		select * 
+		from emp
+		where deptno in (10, 20)	
+	
+	3 用10,30的员工减去10,20的员工信息
+	
+		select * 
+		from emp
+		where deptno in ( 10 ,30)
+		
+		minus
+		
+		select * 
+		from emp
+		where deptno in (10, 20)	
+	
+	4 查询三个部门的工资信息并分组统计，格式如下：
+	    DEPTNO JOB                  SUM(SAL)
+	---------- ------------------ ----------
+			10 CLERK                    1300
+			   MANAGER                  2450
+			   PRESIDENT                5000
+										8750
+
+			20 ANALYST                  6000
+			   CLERK                    1900
+			   MANAGER                  2975
+									   10875
+
+			30 CLERK                     950
+			   MANAGER                  2850
+			   SALESMAN                 5600
+										9400
+
+									   29025
+	提示：
+		SQL plus中使用以下命令来去掉分组重复的deptno
+			break on deptno skip 2;
+		使用以下命令来恢复
+			break on null;
+			
+	这里边有三个集合：
+		1 各部门各岗位的工资总和
+			select deptno , job , sum(sal)
+			from emp
+			group by deptno ,job
+			
+			    DEPTNO JOB         SUM(SAL)
+			---------- --------- ----------
+					10 CLERK           1300
+					10 MANAGER         2450
+					10 PRESIDENT       5000
+					20 ANALYST         6000
+					20 CLERK           1900
+					20 MANAGER         2975
+					30 CLERK            950
+					30 MANAGER         2850
+					30 SALESMAN        5600
+			
+			
+		2 各部门的工资总和
+			select deptno , sum(sal)
+			from emp
+			group by deptno
+			
+			    DEPTNO   SUM(SAL)
+			---------- ----------
+					30       9400
+					20      10875
+					10       8750
+		
+		
+		3 全公司的工资总和
+			select sum(sal)
+			from emp
+			
+			  SUM(SAL)
+			----------
+				 29025
+				 
+			select deptno , job , sum(sal)
+			from emp
+			group by deptno ,job	 
+			
+			union
+			
+			select deptno , sum(sal)
+			from emp
+			group by deptno
+			
+			union
+			
+			select sum(sal)
+			from emp
+				 
+			第 5 行出现错误:
+			ORA-01789: 查询块具有不正确的结果列数 
+				 
+			select deptno , job , sum(sal)
+			from emp
+			group by deptno ,job	 
+			
+			union
+			
+			select deptno  ,NULL, sum(sal)
+			from emp
+			group by deptno
+			
+			union
+			
+			select NULL,NULL, sum(sal)
+			from emp	 
+				 
+				 
+									   
+6 集合运算注意事项：
+	* 参与运算的各个集合必须列数相同，且类型一致
+	* 采用第一个集合的表头作为最终使用的表头，（别名也只能在第一个集合上起）
+    * 可以使用括号修改各个sql执行的优先级
+	
+	
+7 新增数据：
+	insert into 表名 values(值1，值2.....)
+	insert into 表名(列1,列2....) values(值1，值2.....)
+	
+	往部门表里边插入以下几行信息
+	    DEPTNO DNAME                        LOC
+	---------- ---------------------------- --------------------------
+			50 SUPPORT                      WASHINGTON
+			60 TEST
+			70 PURCHASING
+
+		insert into dept values(50 , 'SUPPORT' , 'WASHINGTON');
+		insert into dept values(60 , 'TEST' , NULL);
+		insert into dept(deptno,dname) values(70 , 'PURCHASING' );
+			没有指定的列，会自动插入默认值，一般是NULL
+
+8 修改数据：
+	update 表名 set 列1 = 值1 , 列2 =值2  [ where cond]
+	1 将60号部门的LOC改成MIAMI
+		update dept set loc = 'MIAMI' where deptno = 60
+		
+	2 将50号部门的部门名字改成 SUPPORT1 ，LOC改为NULL
+		update dept set dname = 'SUPPORT1' , loc = NULL  where deptno = 50
+	
+	
+	
+9 删除数据：
+	delete from 表名 [ where cond ]
+	
+	1 删除部门号为50的部门信息
+		delete from dept where deptno = 50
+	
+	2 删除部门号大于40的部门信息
+		delete from dept where deptno > 40
+		
+		
+	insert into 表名 values(列的数据。。。。)
+	update 表名 set 列1 = 值
+	delete from 表名 where
+	
+10 事务
+	A  100      B  0 
+	A  -100    
+			（B销号）
+	            B  100  --执行失败
+				
+	ACID
+	原子性
+	一致性
+	隔离性
+	持久性
+	
+	
+	隔离级别
+	
+		某一行数据 本来是0
+	
+		读未提交
+			A事务开启
+										B事务开启
+			将0改成100
+										读取读到100
+			commit提交
+										B事务结束commit
+			
+			
+			
+			
+		读已提交
+		
+			A事务开启
+										B事务开启
+			将0改成100
+										读取读到0
+			commit提交
+										读取读到100
+										B事务结束commit
+										
+										
+										
+		可重复度
+		
+			A事务开启
+										B事务开启
+			将0改成100
+										读取读到0
+			commit提交
+										读取读到0
+										B事务结束commit
+										
+			C事务开启
+			读取读到100
+			...
+		串行化
+		
+			A事务开启
+			将0改成100
+			commit提交
+										B事务开启
+										读取读到100
+										读取读到100
+										B事务结束commit
+				
+				
+				
+				
+				
+				
+				
+11 事务的控制
+	创建保存点
+		savepoint 保存点名字
+	回滚到相应保存点
+		rollback to savepoint 保存点名字
+		
+	一但当前事务结束，在当前事务建立的savepoint将失效。
+	

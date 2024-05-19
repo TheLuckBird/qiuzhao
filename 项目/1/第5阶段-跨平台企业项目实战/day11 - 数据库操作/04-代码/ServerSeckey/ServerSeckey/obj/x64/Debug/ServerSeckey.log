@@ -1,0 +1,94 @@
+﻿生成启动时间为 2019/9/6 20:21:52。
+     1>项目“D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\ServerSeckey.vcxproj”在节点 2 上(Build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\obj\x64\Debug\ServerSeckey.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       _ValidateSources:
+         Validating sources
+       _CopySources:
+         Copying sources remotely to '192.168.237.166'
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\BaseShm.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\Codec.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\CodecFactory.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\Hash.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\main.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\Message.pb.cc', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\OCCIOP.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\RequestCodec.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\RequestFactory.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\RespondCodec.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\RespondFactory.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\RsaCrypto.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\SecKeyShm.cpp', as it is up to date.
+         Copying file 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\ServerOP.cpp' to '/root/projects/ServerSeckey/ServerOP.cpp'
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\TcpServer.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\TcpSocket.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\BaseShm.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\Codec.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\CodecFactory.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\Hash.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\Message.pb.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\OCCIOP.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\RequestCodec.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\RequestFactory.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\RespondCodec.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\RespondFactory.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\RsaCrypto.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\SecKeyShm.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\SeckKeyNodeInfo.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\ServerOP.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\TcpServer.h', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\TcpSocket.h', as it is up to date.
+       _ValidateValidArchitecture:
+         Validating architecture
+         Current project architecture 'x64' is compatible with the remote system architecture 'x64' ('x64').
+       ClCompile:
+         Starting remote build
+         Compiling sources:
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\BaseShm.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\Codec.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\CodecFactory.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\Hash.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\main.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\Message.pb.cc', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\OCCIOP.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\RequestCodec.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\RequestFactory.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\RespondCodec.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\RespondFactory.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\RsaCrypto.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\SecKeyShm.cpp', as it is up to date.
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/ServerSeckey/ServerOP.cpp -g2 -gdwarf-2 -o "/root/projects/ServerSeckey/obj/x64/Debug/ServerOP.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         ServerOP.cpp
+         /root/projects/ServerSeckey/ServerOP.cpp: 在构造函数‘ServerOP::ServerOP(std::string)’中:
+         /root/projects/ServerSeckey/ServerOP.cpp:30:30: 警告：‘short unsigned int’转换自‘Json::Value::Int {aka int}’时可能改变值 [-Wconversion]
+           m_port = root["Port"].asInt();
+                                       ^
+         /root/projects/ServerSeckey/ServerOP.cpp: 在成员函数‘std::string ServerOP::getRandKey(ServerOP::KeyLen)’中:
+         /root/projects/ServerSeckey/ServerOP.cpp:152:17: 警告：‘unsigned int’转换自‘time_t {aka long int}’时可能改变值 [-Wconversion]
+           srand(time(NULL));
+                          ^
+         /root/projects/ServerSeckey/ServerOP.cpp:155:13: 警告：不建议使用从字符串常量到‘char*’的转换 [-Wwrite-strings]
+           char *cs = "~!@#$%^&*()_+}{|\';[]";
+                      ^
+         
+         Done compiling '/root/projects/ServerSeckey/ServerOP.cpp'
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\TcpServer.cpp', as it is up to date.
+         Skipping 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\TcpSocket.cpp', as it is up to date.
+       Link:
+         Linking objects
+         Invoking 'ld'
+         g++ -o "/root/projects/ServerSeckey/bin/x64/Debug/ServerSeckey.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /root/projects/ServerSeckey/obj/x64/Debug/BaseShm.o /root/projects/ServerSeckey/obj/x64/Debug/Codec.o /root/projects/ServerSeckey/obj/x64/Debug/CodecFactory.o /root/projects/ServerSeckey/obj/x64/Debug/Hash.o /root/projects/ServerSeckey/obj/x64/Debug/main.o /root/projects/ServerSeckey/obj/x64/Debug/Message.pb.o /root/projects/ServerSeckey/obj/x64/Debug/OCCIOP.o /root/projects/ServerSeckey/obj/x64/Debug/RequestCodec.o /root/projects/ServerSeckey/obj/x64/Debug/RequestFactory.o /root/projects/ServerSeckey/obj/x64/Debug/RespondCodec.o /root/projects/ServerSeckey/obj/x64/Debug/RespondFactory.o /root/projects/ServerSeckey/obj/x64/Debug/RsaCrypto.o /root/projects/ServerSeckey/obj/x64/Debug/SecKeyShm.o /root/projects/ServerSeckey/obj/x64/Debug/ServerOP.o /root/projects/ServerSeckey/obj/x64/Debug/TcpServer.o /root/projects/ServerSeckey/obj/x64/Debug/TcpSocket.o -lpthread -ljson -lcrypto -lprotobuf -locci -lclntsh
+         Done linking, output file name: '/root/projects/ServerSeckey/bin/x64/Debug/ServerSeckey.out'
+         Copying file '/root/projects/ServerSeckey/bin/x64/Debug/ServerSeckey.out' to 'D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\bin\x64\Debug\ServerSeckey.out'
+         ServerSeckey.vcxproj -> D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\bin\x64\Debug\ServerSeckey.out
+       FinalizeBuildStatus:
+         正在删除文件“D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\obj\x64\Debug\ServerSeckey.tlog\unsuccessfulbuild”。
+         正在对“D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\obj\x64\Debug\ServerSeckey.tlog\ServerSeckey.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“D:\Videos\36期-项目1\day11 - 数据库操作\04-代码\ServerSeckey\ServerSeckey\ServerSeckey.vcxproj”(Build 个目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:03.19

@@ -1,0 +1,20 @@
+﻿生成启动时间为 2019/6/21 11:47:49。
+     1>项目“C:\Users\Kevin\Desktop\SharePtr\SharePtr\SharePtr.vcxproj”在节点 2 上(Build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Debug\SharePtr.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc141.pdb" /Gd /TP /analyze- /FC /errorReport:prompt test.cpp
+         test.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Kevin\Desktop\SharePtr\Debug\SharePtr.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"C:\Users\Kevin\Desktop\SharePtr\Debug\SharePtr.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Kevin\Desktop\SharePtr\Debug\SharePtr.lib" /MACHINE:X86 Debug\test.obj
+         SharePtr.vcxproj -> C:\Users\Kevin\Desktop\SharePtr\Debug\SharePtr.exe
+       FinalizeBuildStatus:
+         正在删除文件“Debug\SharePtr.tlog\unsuccessfulbuild”。
+         正在对“Debug\SharePtr.tlog\SharePtr.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“C:\Users\Kevin\Desktop\SharePtr\SharePtr\SharePtr.vcxproj”(Build 个目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:03.39

@@ -1,0 +1,1 @@
+g++ -o "/root/projects/TcpServer/bin/x64/Debug/TcpServer.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /root/projects/TcpServer/obj/x64/Debug/main.o /root/projects/TcpServer/obj/x64/Debug/TcpServer.o /root/projects/TcpServer/obj/x64/Debug/TcpSocket.o -lpthread -ljson -lcrypto -linterface

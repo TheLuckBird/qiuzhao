@@ -1,0 +1,476 @@
+0. 上一次课复习
+
+	Oracle部分:
+		表操作
+		
+		视图
+		
+		索引
+		
+		同义词
+		
+		序列
+		
+		SQL sqlplus区分
+		
+		Oracle客户端安装
+		
+		PLSQL Developer工具使用
+		
+	MySQL部分:
+		MySQL数据库简介
+		
+		MySQL数据库安装
+		
+		启动和关闭MySQL数据库
+		
+		MySQL数据库CURD
+		
+		MySQL数据库表CURD
+		
+		MySQL数据库表数据CURD
+		
+		时间和日期相关函数
+		
+		字符串相关函数
+
+
+
+	字符串和日期之间转换
+	
+	MySQL数据库不支持Oracle写法
+	mysql> select date_format(now(), 'yyyy-mm-dd') from dual;
+	+----------------------------------+
+	| date_format(now(), 'yyyy-mm-dd') |
+	+----------------------------------+
+	| yyyy-mm-dd                       |
+	+----------------------------------+
+	1 row in set (0.10 sec)
+
+	显示当前年月日
+	mysql> select date_format(now(), '%Y-%m-%d') from dual;
+	+--------------------------------+
+	| date_format(now(), '%Y-%m-%d') |
+	+--------------------------------+
+	| 2019-03-10                     |
+	+--------------------------------+
+
+	显示当前年月日时分秒
+	mysql> select date_format(now(), '%Y-%m-%d %H:%i:%S') from dual;
+	+-----------------------------------------+
+	| date_format(now(), '%Y-%m-%d %H:%i:%S') |
+	+-----------------------------------------+
+	| 2019-03-10 09:51:25                     |
+	+-----------------------------------------+
+
+	将指定时间转化为当前系统时间格式
+	mysql> select str_to_date('2018-11-11 11:11:11', '%Y-%m-%d %H:%i:%s') from dual;
+	+---------------------------------------------------------+
+	| str_to_date('2018-11-11 11:11:11', '%Y-%m-%d %H:%i:%s') |
+	+---------------------------------------------------------+
+	| 2018-11-11 11:11:11                                     |
+	+---------------------------------------------------------+
+	1 row in set (0.00 sec)
+
+
+1. 数学相关函数
+
+	绝对值
+	mysql> select abs(-1) from dual;
+	+---------+
+	| abs(-1) |
+	+---------+
+	|       1 |
+	+---------+
+	1 row in set (0.01 sec)
+
+	将十进制转化为二进制
+	mysql> select bin(10) from dual;
+	+---------+
+	| bin(10) |
+	+---------+
+	| 1010    |
+	+---------+
+	1 row in set (0.00 sec)
+
+	向上取整
+	mysql> select ceiling(3.8) from dual;
+	+--------------+
+	| ceiling(3.8) |
+	+--------------+
+	|            4 |
+	+--------------+
+	1 row in set (0.11 sec)
+
+	将十进制转化为二进制
+	mysql> select conv(16, 10, 2) from dual;
+	+-----------------+
+	| conv(16, 10, 2) |
+	+-----------------+
+	| 10000           |
+	+-----------------+
+	1 row in set (0.00 sec)
+
+	向下取整
+	mysql> select floor(3.8) from dual;
+	+------------+
+	| floor(3.8) |
+	+------------+
+	|          3 |
+	+------------+
+	1 row in set (0.00 sec)
+
+	保留小数位数 四舍五入
+	mysql> select format(3.1415926, 3) from dual;
+	+----------------------+
+	| format(3.1415926, 3) |
+	+----------------------+
+	| 3.142                |
+	+----------------------+
+	1 row in set (0.00 sec)
+
+	十进制转化为十六进制
+	mysql> select hex(16) from dual;
+	+---------+
+	| hex(16) |
+	+---------+
+	| 10      |
+	+---------+
+	1 row in set (0.00 sec)
+
+	返回一个最小的值
+	mysql> select least(3, 4, 5, 0, -8, 100) from dual;
+	+----------------------------+
+	| least(3, 4, 5, 0, -8, 100) |
+	+----------------------------+
+	|                         -8 |
+	+----------------------------+
+	1 row in set (0.00 sec)
+
+	求模
+	mysql> select mod(101, 10) from dual;
+	+--------------+
+	| mod(101, 10) |
+	+--------------+
+	|            1 |
+	+--------------+
+	1 row in set (0.00 sec)
+
+	获取随机数
+	mysql> select rand() from dual;
+	+--------------------+
+	| rand()             |
+	+--------------------+
+	| 0.8884762897048856 |
+	+--------------------+
+	1 row in set (0.00 sec)
+
+
+
+2. 多表查询
+
+	使用scott数据库
+	mysql> use scott
+
+	查询当前数据库有哪些表
+	mysql> show tables;
+	+-----------------+
+	| Tables_in_scott |
+	+-----------------+
+	| bonus           |
+	| dept            |
+	| emp             |
+	| salgrade        |
+	+-----------------+
+	4 rows in set (0.00 sec)
+
+	笛卡尔全集(交叉连接)
+		Oracle写法:
+		mysql> select e.*, d.* from emp e, dept d;
+		MySQL写法:
+		mysql> select e.*, d.* from emp e cross join dept d;
+
+	内连接
+		oracle:
+		mysql> select e.*, d.* from emp e, dept d where e.deptno = d.deptno;
+		
+		MySQL
+		mysql> select e.*, d.* from emp e inner join dept d on e.deptno = d.deptno;
+
+	左外连接
+		mysql> select e.*, d.* from emp e left outer join dept d on e.deptno = d.deptno;
+
+	右外连接
+		mysql> select e.*, d.* from emp e right outer join dept d on e.deptno = d.deptno;
+
+		
+	综合案例:
+	
+	2.1 查询员工信息,员工号,姓名,月薪,部门名称
+	
+	Oracle写法:
+		mysql> select e.empno, e.ename, e.sal, d.dname from emp e, dept d where e.deptno = d.deptno;
+
+	MySQL写法:
+		mysql> select e.empno, e.ename, e.sal, d.dname from emp e inner join dept d on e.deptno = d.deptno;
+	
+	2.2 统计各个部门员工总人数
+	
+	右外连接:
+		mysql> select d.deptno, count(e.empno) from emp e right outer join dept d on e.deptno = d.deptno group by d.deptno;
+
+		
+	左外连接:
+		mysql> select d.deptno, count(e.empno) from dept d left outer join emp e on d.deptno = e..deptno group by d.deptno;
+		+--------+----------------+
+		| deptno | count(e.empno) |
+		+--------+----------------+
+		|     10 |              3 |
+		|     20 |              5 |
+		|     30 |              6 |
+		|     40 |              0 |
+		+--------+----------------+
+	
+	2.3 查询员工、老板信息，显示: xxx的老板是xxx
+		mysql> select concat(e.ename, '的老板是', ifnull(b.ename, '他自己')) from emp e left outeer join  emp b on e.mgr = b.empno;
+		+---------------------------------------------------------------+
+		| concat(e.ename, '的老板是', ifnull(b.ename, '他自己'))        |
+		+---------------------------------------------------------------+
+		| SMITH的老板是FORD                                             |
+		| ALLEN的老板是BLAKE                                            |
+		| WARD的老板是BLAKE                                             |
+		| JONES的老板是KING                                             |
+		| MARTIN的老板是BLAKE                                           |
+		| BLAKE的老板是KING                                             |
+		| CLARK的老板是KING                                             |
+		| SCOTT的老板是JONES                                            |
+		| KING的老板是他自己                                            |
+		| TURNER的老板是BLAKE                                           |
+		| ADAMS的老板是SCOTT                                            |
+		| JAMES的老板是BLAKE                                            |
+		| FORD的老板是JONES                                             |
+		| MILLER的老板是CLARK                                           |
+		+---------------------------------------------------------------+
+		14 rows in set (0.15 sec)
+
+	
+	
+3. 表的约束
+	主键约束
+	
+	外键约束
+	
+	唯一性约束
+	
+	非空约束
+	
+	检查性约束
+
+
+4. MySQL中文乱码问题
+
+	原因一:
+
+	查看当前字符集
+	mysql> show variables like 'character%';
+	+--------------------------+----------------------------+
+	| Variable_name            | Value                      |
+	+--------------------------+----------------------------+
+	| character_set_client     | utf8                       |
+	| character_set_connection | utf8                       |
+	| character_set_database   | latin1                     |
+	| character_set_filesystem | binary                     |
+	| character_set_results    | utf8                       |
+	| character_set_server     | latin1                     |
+	| character_set_system     | utf8                       |
+	| character_sets_dir       | /usr/share/mysql/charsets/ |
+	+--------------------------+----------------------------+
+	8 rows in set (0.12 sec)
+
+	
+	以默认字符集方式登录MySQL数据库
+	[root@localhost i18n]# mysql -uroot -p
+	Enter password: 
+	
+	使用scott数据库
+	mysql> use scott;
+
+	mysql> insert into dept values(50, '研发部', '北七家');
+	Query OK, 1 row affected (0.15 sec)
+
+	mysql> select * from dept;
+	+--------+------------+-----------+
+	| deptno | dname      | loc       |
+	+--------+------------+-----------+
+	|     10 | ACCOUNTING | NEW YORK  |
+	|     20 | RESEARCH   | DALLAS    |
+	|     30 | SALES      | CHICAGO   |
+	|     40 | OPERATIONS | BOSTON    |
+	|     50 | 研发部     | 北七家    |
+	+--------+------------+-----------+
+	5 rows in set (0.00 sec)
+
+	以gbk字符集登录MySQL数据库
+	[root@localhost i18n]# mysql -uroot -p123456 --default_character_set=gbk;
+
+	mysql> use scott
+
+	mysql> select * from dept;
+	+--------+------------+----------+
+	| deptno | dname      | loc      |
+	+--------+------------+----------+
+	|     10 | ACCOUNTING | NEW YORK |
+	|     20 | RESEARCH   | DALLAS   |
+	|     30 | SALES      | CHICAGO  |
+	|     40 | OPERATIONS | BOSTON   |
+	|     50 | Ґ·¢²¿     | ±±ǟ¼Р  |
+	+--------+------------+----------+
+	5 rows in set (0.14 sec)
+
+
+	原因二: 操作系统原因
+	
+	查看当前系统语言集
+	[root@localhost i18n]# echo $LANG
+	zh_CN.UTF-8
+	[root@localhost i18n]# 
+
+	修改语言集
+	[root@localhost i18n]# export LANG=c
+	[root@localhost i18n]# echo $LANG
+	c
+	
+	登录MySQL数据库
+	[root@localhost ~]# mysql -uroot -p
+	Enter password: 
+
+	mysql> use scott
+
+	mysql> select *from dept;
+	+--------+------------+----------+
+	| deptno | dname      | loc      |
+	+--------+------------+----------+
+	|     10 | ACCOUNTING | NEW YORK |
+	|     20 | RESEARCH   | DALLAS   |
+	|     30 | SALES      | CHICAGO  |
+	|     40 | OPERATIONS | BOSTON   |
+	|     50 | ???        | ???      |
+	+--------+------------+----------+
+	5 rows in set (0.00 sec)
+
+	[root@localhost ~]# export LANG='zh_CN.UTF-8'
+
+	
+	因素三: xshell
+	
+
+5. Navicat连接MySQL数据库
+
+
+6. C语言连接MySQL数据库API
+
+	头文件: mysql.h
+	静态库: libmysqlclient.a
+	
+	[root@localhost /]# locate mysql.h
+	/usr/include/mysql/mysql.h
+
+	[root@localhost /]# locate libmysqlclient.a
+	/usr/lib64/mysql/libmysqlclient.a
+
+
+
+7. C连接MySQL数据库步骤
+
+	7.1 初始化
+		通过调用mysql_init()初始化连接处理程序
+	
+	7.2 连接到MySQL数据库
+		通过调用mysql_real_connect()连接到服务器
+		
+	7.3 断开连接
+		通过调用mysql_close()，关闭与MySQL服务器的连接。
+
+
+8. 执行非select语句
+
+	mysql_query()
+
+	通过调用mysql_affected_rows()，可发现有多少行已被改变
+
+	如果希望了解查询是否应返回结果集，可使用mysql_field_count()进行检查
+
+9. 执行select语句
+
+	问题一: 每一张表字段个数不确定
+	
+	问题二: 每一张表数据行数不确定
+
+	通过调用mysql_store_result()，一次性地检索整个结果集
+	
+	通过调用mysql_fetch_row()访问行
+	
+	通过调用mysql_fetch_lengths()，能获得关于各行中数据大小的信息。
+	
+	调用mysql_free_result()释放结果集使用的内存
+	
+	调用mysql_num_rows()，还能发现有多少行。
+	
+	mysql_num_fields返回字段个数
+	
+10. 执行select语句, 获取表头信息
+
+	通过调用mysql_fetch_fields()，一次性地获得关于字段的所有信息。
+
+	unsigned int num_fields;
+	unsigned int i;
+	MYSQL_FIELD *fields;
+	 
+	num_fields = mysql_num_fields(result);
+	fields = mysql_fetch_fields(result);
+	for(i = 0; i < num_fields; i++)
+	{
+	   printf("Field %u is %s\n", i, fields[i].name);
+	}
+
+
+11. 简单mysql客户端实现思路
+
+	1) 初始化
+	
+	2) 连接到MySQL数据库
+	
+	3) 循环接受输入
+	while(1)
+	{
+		//执行sql语句
+		
+		if (如果是select查询)
+		{
+			输出结果集
+		}
+		else
+		{
+			printf("多少行受影响....\n");
+		}
+	
+	}
+	
+	
+	4) 关闭连接
+	
+12. 事务
+
+	开事务
+	
+	回滚
+	
+	提交
+	
+	设置手动提交事务
+	
+	设置自动提交事务
+	
+	
+	
+

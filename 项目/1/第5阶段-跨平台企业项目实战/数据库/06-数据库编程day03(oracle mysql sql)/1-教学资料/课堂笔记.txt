@@ -1,0 +1,786 @@
+1. 上一次课复习
+
+	转换函数
+		to_char
+		to_number
+		to_date
+		
+	通用函数
+		nvl
+		nvl2
+	
+	条件表达式:
+		case
+		
+		decode
+		
+	分组函数:
+		max min avg count sum
+		
+	分组数据:
+		group by ...
+		
+	过滤分组:
+		having
+		
+	多表查询:
+		empno  ename  sal dname 
+		
+		笛卡尔积
+		
+		等值连接
+		不等值连接
+		外连接
+		自连接
+		
+	子查询:
+		多行子查询:
+		ANY ALL  IN
+		
+	集合运算(了解)
+		并集
+		交集
+		差集
+		
+	数据处理:
+		insert
+		delete
+		update
+		
+	事务:
+		回滚: rollback
+		提交: commit
+		保存点: savepoint
+		
+
+2. TOP-N问题
+
+	rownum: 伪列
+	SQL> select rownum, empno, ename, sal from emp;
+
+		ROWNUM	EMPNO ENAME		SAL
+	---------- ---------- ---------- ----------
+		 1	 7369 SMITH		800
+		 2	 7499 ALLEN	       1600
+		 3	 7521 WARD	       1250
+		 4	 7566 JONES	       2975
+		 5	 7654 MARTIN	       1250
+		 6	 7698 BLAKE	       2850
+		 7	 7782 CLARK	       2450
+		 8	 7788 SCOTT	       3000
+		 9	 7839 KING	       5000
+		10	 7844 TURNER	       1500
+		11	 7876 ADAMS	       1100
+		12	 7900 JAMES		950
+		13	 7902 FORD	       3000
+		14	 7934 MILLER	       1300
+
+		Wrote file afiedt.buf
+		
+	结果:
+	  1  select rownum, empno, ename, sal
+	  2  from (select * from emp order by sal desc)
+	  3* where rownum <= 3
+		SQL> /
+
+			ROWNUM	EMPNO ENAME		SAL
+		---------- ---------- ---------- ----------
+			 1	 7839 KING	       5000
+			 2	 7788 SCOTT	       3000
+			 3	 7902 FORD	       3000
+		
+
+3. 表的操作
+
+	3.1 创建表: 权限 表空间
+	
+	create table 表名(
+		列名1 类型1,
+		列名2 类型2,
+		...
+		
+	);
+
+	第一种方式: 
+	create table test1 (
+		id number,
+		name varchar2(20),
+		hiredate date default sysdate
+	);
+	
+	第二种方式: 
+	根据已经存在表创建表, 由于条件为假 只复制结构不拷贝数据
+	SQL> create table test2 as select * from emp where 1 = 2;
+
+	第三种方式:
+	根据已经存在表创建表, 拷贝表结构同时也拷贝数据
+	SQL> create table test3 as select * from emp where deptno = 20;
+	
+	
+	案例: 员工号 姓名 月薪 年薪 年收入 部门名称。
+	
+	第一步:
+	select empno , ename, sal, sal * 12 yearincome, sal * 12 + nvl(comm, 0) income from emp;
+	
+	第二步: 添加部门编号
+	select e.empno, e.ename, e.sal, e.sal * 12 yearincome, e.sal * 12 + nvl(e.comm, 0) income, d.dname from emp e, dept d where e.deptno = d.deptno;
+	
+	第三步: 创建一张表
+	create table test4 as select e.empno, e.ename, e.sal, e.sal * 12 yearincome, e.sal * 12 + nvl(e.comm, 0) income, d.dname from emp e, dept d where e.deptno = d.deptno;
+
+	
+	
+	3.2 修改表:
+	add  
+	modify 
+	drop column 
+	rename column
+	
+	
+	3.3 删除表
+	
+	查询当前用户下表
+	SQL> select * from tab;
+
+	删除表test1
+	SQL> drop table test1;
+
+	查看回收站
+	SQL> show recyclebin 
+
+	不经过回收站, 直接删除表
+	SQL> drop table test2 purge;
+
+	清空回收站
+	SQL> purge recyclebin;
+
+	
+	3.4 重命名表
+	
+	将test3表名改为test
+	SQL> rename test3 to test;
+
+	
+4. 约束
+
+	非空约束
+	
+	唯一性约束
+	
+	主键约束(非空约束 + 唯一性约束)
+	
+	检查性约束(性别: 男  女)
+	
+	外键约束
+	
+	案例:
+	表创建:
+	create table stu
+	(
+	sid number constraint pk_student primary key, 
+	sname varchar2(20) constraint nn_student_name not null,
+	email varchar2(20) constraint un_student_email unique, 	
+	age number constraint chk_student_age_min check(age > 10),	
+	gender varchar2(6) constraint chk_student_gender check(gender in ('M', 'F')),
+	deptno number constraint fk_student references dept (deptno) ON DELETE SET NULL
+	)
+	
+	SQL> insert into stu values(1, '1name', '1@qq.com', 18, 'M',10);
+
+	主键约束错误:
+	SQL> insert into stu values(1, '1name', '1@qq.com', 18, 'M',10);
+	insert into stu values(1, '1name', '1@qq.com', 18, 'M',10)
+	*
+	ERROR at line 1:
+	ORA-00001: unique constraint (SCOTT.PK_STUDENT) violated
+
+	名字非空约束:
+	SQL> insert into stu(sid, email, age, gender, deptno) values(3, '3@qq.com', 20, 'M', 30);
+	insert into stu(sid, email, age, gender, deptno) values(3, '3@qq.com', 20, 'M', 30)
+	*
+	ERROR at line 1:
+	ORA-01400: cannot insert NULL into ("SCOTT"."STU"."SNAME")
+
+	邮箱唯一性约束:
+	SQL> insert into stu values(4, '4name', '2@qq.com', 21, 'M', 40);
+	insert into stu values(4, '4name', '2@qq.com', 21, 'M', 40)
+	*
+	ERROR at line 1:
+	ORA-00001: unique constraint (SCOTT.UN_STUDENT_EMAIL) violated
+
+	age检查性约束:
+	SQL> insert into stu values(4, '4name', '4@qq.com', 8, 'M', 40);
+	insert into stu values(4, '4name', '4@qq.com', 8, 'M', 40)
+	*
+	ERROR at line 1:
+	ORA-02290: check constraint (SCOTT.CHK_STUDENT_AGE_MIN) violated
+
+	deptno外键约束:
+	SQL> insert into stu values(5, '5n', '5@qq.com', 18, 'F', 50);
+	insert into stu values(5, '5n', '5@qq.com', 18, 'F', 50)
+	*
+	ERROR at line 1:
+	ORA-02291: integrity constraint (SCOTT.FK_STUDENT) violated - parent key not found
+
+5. 视图
+
+	第一步: 授权
+	
+	以sys用户登录oracle
+	SQL> connect / as sysdba;
+	Connected.
+	
+	查看当前登录用户
+	SQL> show user;
+	USER is "SYS"
+	
+	给scott用户授权
+	SQL> grant create view to scott;
+
+
+	第二步: 创建视图
+	create view empinfo as 
+		select e.empno, e.ename, e.sal, d.dname
+		from emp e, dept d
+		where e.deptno = d.deptno
+
+	第三步: 使用视图查询数据
+	SQL> select * from empinfo;
+
+	
+	删除视图:
+	SQL> drop view empinfo;
+	
+	
+6. 序列
+
+	创建序列:
+	SQL> create sequence seq;
+
+	
+	两个属性:
+	nextval: 下一个值
+	currval: 当前值
+	
+	SQL> select seq.nextval from dual;
+
+	   NEXTVAL
+	----------
+		 1
+
+	SQL> select seq.currval from dual;
+
+	   CURRVAL
+	----------
+		 1
+
+	SQL> select seq.nextval from dual;
+
+	   NEXTVAL
+	----------
+		 2
+
+	SQL> select seq.currval from dual;
+
+	   CURRVAL
+	----------
+		 2
+
+	
+	应用示例:
+	SQL> create  table test1(id number, name varchar2(20));
+
+	Table created.
+
+	SQL> insert into test1 values(seq.nextval, 'aaaa');
+
+	1 row created.
+
+	SQL> insert into test1 values(seq.nextval, 'bbbb');
+
+	1 row created.
+
+	SQL> insert into test1 values(seq.nextval, 'ccc');
+
+	1 row created.
+
+	SQL> select * from test1;
+
+		ID NAME
+	---------- --------------------
+		 4 aaaa
+		 5 bbbb
+		 6 ccc
+
+	SQL> 
+	
+	
+	删除序列:
+	SQL> drop sequence seq;
+
+7. 索引
+
+	创建索引
+	SQL> create index myindex on emp(deptno);
+
+	
+	删除索引
+	SQL> drop index myindex;
+
+8. 同义词
+
+	创建同义词
+	create synonym hremp for hr.employees;
+	
+	删除同义词
+	drop  synonym hremp;
+	
+9. PLSQL Developer的操作
+
+10. MySQL安装
+
+	查看当前系统安装MySQL数据库
+	[root@localhost ~]# rpm -qa | grep mysql
+	mysql-community-devel-5.7.23-1.el7.x86_64
+	mysql-community-client-5.7.23-1.el7.x86_64
+	mysql-community-common-5.7.23-1.el7.x86_64
+	mysql-community-server-5.7.23-1.el7.x86_64
+	mysql-community-libs-5.7.23-1.el7.x86_64
+
+11. 启动和关闭MySQL数据库
+	
+	mysqld-->  mysql daemon
+
+	启动mysql服务
+	[root@localhost ~]# systemctl  start mysqld
+	
+	查看mysql服务状态
+	[root@localhost ~]# systemctl status mysqld
+	
+	停止msyql服务
+	[root@localhost ~]# systemctl stop mysqld
+	
+	重启mysql服务
+	[root@localhost ~]# systemctl restart mysqld
+	
+12. 登录mysql数据库
+
+	用户名: root
+	密码: 123456
+	
+	前提条件: 启动mysql数据库服务
+
+	第一种方式(不推荐使用)
+	[root@localhost ~]# mysql -uroot -p123456
+	
+	-u 指定用户名
+	-p 指定密码
+	
+	第二种方式:
+	[root@localhost ~]# mysql -uroot -p
+	Enter password: 
+
+13. MySQL数据库和Oracle数据库区别
+
+	Oracle只有一个数据库(orcl), 多个用户(sys scott hr), 一个用户有多张表
+	MySQL只有一个用户名(root), 多个数据库(sys scott hr), 一个数据库有多张表
+	
+14. MySQL数据库CURD
+
+
+	查看MySQL数据库有哪些数据库
+	mysql> show databases;
+	+--------------------+
+	| Database           |
+	+--------------------+
+	| information_schema |
+	| mysql              |
+	| performance_schema |
+	| scott              |
+	| sys                |
+	+--------------------+
+	5 rows in set (0.14 sec)
+
+	创建一个数据库
+	mysql> create database mytest;
+
+	创建一个数据库的同时指定字符集(UTF-8)
+	mysql> create database mytest2 character set utf8;
+
+	创建数据库的同时指定字符集和校验规则(了解)
+	mysql> create database mydb3 character set utf8 collate utf8_general_ci;
+
+	显示创建的mytest数据库信息
+	mysql> show create database mytest;
+
+	删除数据库mytest
+	mysql> drop database mytest;
+
+	修改数据库
+	mysql> alter database mytest character set utf8;
+
+	
+15. MySQL数据库表CURD
+
+	查看当前数据库有哪些表
+	mysql> show tables;
+	+-----------------+
+	| Tables_in_scott |
+	+-----------------+
+	| bonus           |
+	| dept            |
+	| emp             |
+	| salgrade        |
+	+-----------------+
+	4 rows in set (0.00 sec)
+
+
+	创建一张表
+	
+		指定使用mytest数据库
+		mysql> use mytest;
+		
+		创建表emp
+		mysql> create table emp(id int, name varchar(20));
+		
+	显示表信息
+	mysql> show create table emp;
+
+	查看表的结构
+	mysql> desc emp;
+	+-------+-------------+------+-----+---------+-------+
+	| Field | Type        | Null | Key | Default | Extra |
+	+-------+-------------+------+-----+---------+-------+
+	| id    | int(11)     | YES  |     | NULL    |       |
+	| name  | varchar(20) | YES  |     | NULL    |       |
+	+-------+-------------+------+-----+---------+-------+
+	2 rows in set (0.00 sec)
+
+	修改表名 emp-->emp1
+	mysql> rename table emp to emp1;
+
+	向表中增加一列 height
+	mysql> alter table emp add column height double;
+
+	修改表的字段属性
+	mysql> alter table emp modify column height float;
+	
+	删除表中字段
+	mysql> alter table emp drop column height;
+
+	修改表的字符集
+	mysql> alter table emp character set utf8;
+
+	删除表
+	mysql> drop table emp;
+
+16. MySQL数据库表数据CURD
+
+
+	指定使用的数据库
+	mysql> use mytest;
+
+	创建表
+	create table emp(
+		id int,
+		name varchar(20),
+		sex int,
+		birthday date,
+		salary double,
+		entry_date date,
+		resume text
+		);
+
+	insert into emp values(1, 'zhangsan', 1, '1988-1-1', 15000, '2018-10-1', 'aaaaa');
+	
+	insert into emp values(2, 'lisi', 1, '1988-1-1', 10000, '2018-10-1', 'bbbb');
+	
+	insert into emp values(3, 'wangwu', 1, '1993-1-1', 8000, '2018-10-1', 'bbbb');
+
+	查询表中所有的信息
+	mysql> select * from emp;
+	
+	查询id, name, sex, resume
+	mysql> select id, name, sex, resume from emp;
+	+------+----------+------+--------+
+	| id   | name     | sex  | resume |
+	+------+----------+------+--------+
+	|    1 | zhangsan |    1 | aaaaa  |
+	|    2 | lisi     |    2 | BBBBB  |
+	|    3 | wangwu   |    1 | bbbb   |
+	+------+----------+------+--------+
+	3 rows in set (0.00 sec)
+
+
+	将所有员工薪水都增加500元。
+	mysql> update emp set salary = salary +500;
+	
+	将李四的性别改为2 同时简介改为BBBBB
+	mysql> update emp set sex = 2, resume = 'BBBBB' where name = 'lisi';
+
+	删除名字为李四的信息
+	mysql> delete from emp where name = 'lisi';
+
+	删除所有的数据(危险)
+	mysql> delete from emp;
+
+	
+17. MySQL数据库综合实例
+
+	第一步: 创建数据库mytest
+	mysql> create database mytest character set utf8;
+
+	
+	第二步: 使用mytest数据库
+	mysql> use mytest
+	
+	第三步: 创建student表
+	create table student(
+		id int,
+		name varchar(20),
+		chinese int,
+		english int,
+		math int
+		);
+		
+	第四步: 插入数据
+	
+	insert into student(id,name,chinese,english,math) values(1, '范建',80,85,90);
+	insert into student(id,name,chinese,english,math) values(2,'罗况',90,95,95);
+	insert into student(id,name,chinese,english,math) values(3,'杜子腾',80,96,96);
+	insert into student(id,name,chinese,english,math) values(4,'范冰',81,97,85);
+	insert into student(id,name,chinese,english,math) values(5,'申晶冰',85,84,90);
+	insert into student(id,name,chinese,english,math) values(6,'郝丽海',92,85,87);
+	insert into student(id,name,chinese,english,math) values(7,'郭迪辉',75,81,80);
+	insert into student(id,name,chinese,english,math) values(8,'拎壶冲',77,80,79);
+	insert into student(id,name,chinese,english,math) values(9,'任我行',95,85,85);
+	insert into student(id,name,chinese,english,math) values(10,'史泰香',94,85,84);
+
+	第五步: .....
+
+	
+
+18. 分组数据
+	
+	第一步: 添加班级字段
+	mysql> alter table student add column class_id int;
+
+	第二步: 分班
+	mysql> update student set class_id = 1 where id <= 5;
+
+	mysql> update student set class_id = 2 where id >  5;
+
+	第三步: 执行SQL语句
+	
+	查出各个班的总分，最高分。
+	mysql> select class_id, sum(chinese + english + math), max(chinese + english + math) from student group by class_id;
+	+----------+-------------------------------+-------------------------------+
+	| class_id | sum(chinese + english + math) | max(chinese + english + math) |
+	+----------+-------------------------------+-------------------------------+
+	|        1 |                          1329 |                           280 |
+	|        2 |                          1264 |                           265 |
+	+----------+-------------------------------+-------------------------------+
+	2 rows in set (0.00 sec)
+	
+	求各个班级 英语的平均分：
+	mysql> select class_id, avg(english) from student group by class_id;
+	+----------+--------------+
+	| class_id | avg(english) |
+	+----------+--------------+
+	|        1 |      91.4000 |
+	|        2 |      83.2000 |
+	+----------+--------------+
+	2 rows in set (0.00 sec)
+
+
+	查询出班级总分大于1300分的班级ID
+	mysql> select class_id from student group by class_id having sum(chinese + english + math) > 1300;
+	
+	
+
+19. 日期相关函数
+	mysql> select sysdate() from dual;
+	+---------------------+
+	| sysdate()           |
+	+---------------------+
+	| 2019-03-09 17:41:20 |
+	+---------------------+
+	1 row in set (0.00 sec)
+
+	mysql> select now() from dual;
+	+---------------------+
+	| now()               |
+	+---------------------+
+	| 2019-03-09 17:41:39 |
+	+---------------------+
+	1 row in set (0.00 sec)
+
+	mysql> select year(now()) from dual;
+	+-------------+
+	| year(now()) |
+	+-------------+
+	|        2019 |
+	+-------------+
+	1 row in set (0.00 sec)
+
+	mysql> select year(now()), month(now()), day(now()) from dual;
+	+-------------+--------------+------------+
+	| year(now()) | month(now()) | day(now()) |
+	+-------------+--------------+------------+
+	|        2019 |            3 |          9 |
+	+-------------+--------------+------------+
+	1 row in set (0.00 sec)
+
+	mysql> select current_date() from dual;
+	+----------------+
+	| current_date() |
+	+----------------+
+	| 2019-03-09     |
+	+----------------+
+	1 row in set (0.00 sec)
+
+	mysql> select current_date(), current_time(), current_timestamp() from dual;
+	+----------------+----------------+---------------------+
+	| current_date() | current_time() | current_timestamp() |
+	+----------------+----------------+---------------------+
+	| 2019-03-09     | 17:42:48       | 2019-03-09 17:42:48 |
+	+----------------+----------------+---------------------+
+	1 row in set (0.00 sec)
+
+	mysql> 
+	mysql> 
+	mysql> select now() - 1, now(), now() + 1 from dual;
+	+----------------+---------------------+----------------+
+	| now() - 1      | now()               | now() + 1      |
+	+----------------+---------------------+----------------+
+	| 20190309174316 | 2019-03-09 17:43:17 | 20190309174318 |
+	+----------------+---------------------+----------------+
+	1 row in set (0.00 sec)
+
+	mysql> select date_add(now(), interval - 1 day) from dual;
+	+-----------------------------------+
+	| date_add(now(), interval - 1 day) |
+	+-----------------------------------+
+	| 2019-03-08 17:44:39               |
+	+-----------------------------------+
+	1 row in set (0.00 sec)
+
+	mysql> select date_add(now(), interval + 1 day) from dual;
+	+-----------------------------------+
+	| date_add(now(), interval + 1 day) |
+	+-----------------------------------+
+	| 2019-03-10 17:44:46               |
+	+-----------------------------------+
+	1 row in set (0.00 sec)
+
+	mysql> select date_add(now(), interval + 1 month) from dual;
+	+-------------------------------------+
+	| date_add(now(), interval + 1 month) |
+	+-------------------------------------+
+	| 2019-04-09 17:44:53                 |
+	+-------------------------------------+
+	1 row in set (0.00 sec)
+
+	mysql> select date_add(now(), interval + 1 year) from dual;
+	+------------------------------------+
+	| date_add(now(), interval + 1 year) |
+	+------------------------------------+
+	| 2020-03-09 17:44:58                |
+	+------------------------------------+
+	1 row in set (0.00 sec)
+
+
+
+20. 字符串相关函数
+	mysql> select concat('AAAA', 'BBBB', 'CCCC', 'DDDDD') from dual;
+	+-----------------------------------------+
+	| concat('AAAA', 'BBBB', 'CCCC', 'DDDDD') |
+	+-----------------------------------------+
+	| AAAABBBBCCCCDDDDD                       |
+	+-----------------------------------------+
+	1 row in set (0.00 sec)
+
+	mysql> 
+	mysql> 
+	mysql> select 'AAAAAA' || 'BBBBBB' from dual;
+	+----------------------+
+	| 'AAAAAA' || 'BBBBBB' |
+	+----------------------+
+	|                    0 |
+	+----------------------+
+	1 row in set, 2 warnings (0.00 sec)
+
+	mysql> select charset('Hello') from dual;
+	+------------------+
+	| charset('Hello') |
+	+------------------+
+	| utf8             |
+	+------------------+
+	1 row in set (0.00 sec)
+
+	mysql> select instr('helloworld', 'llo') from dual;
+	+----------------------------+
+	| instr('helloworld', 'llo') |
+	+----------------------------+
+	|                          3 |
+	+----------------------------+
+	1 row in set (0.00 sec)
+
+	mysql> select ucase('hello') from dual;
+	+----------------+
+	| ucase('hello') |
+	+----------------+
+	| HELLO          |
+	+----------------+
+	1 row in set (0.00 sec)
+
+	mysql> select lcase('HELLO') from dual;
+	+----------------+
+	| lcase('HELLO') |
+	+----------------+
+	| hello          |
+	+----------------+
+	1 row in set (0.00 sec)
+
+	mysql> select left('hello world', 3) from dual;
+	+------------------------+
+	| left('hello world', 3) |
+	+------------------------+
+	| hel                    |
+	+------------------------+
+	1 row in set (0.00 sec)
+
+	mysql> select length('hello world') from dual;
+	+-----------------------+
+	| length('hello world') |
+	+-----------------------+
+	|                    11 |
+	+-----------------------+
+	1 row in set (0.00 sec)
+
+	mysql> select replace('hello world', 'l', 'L') from dual;
+	+----------------------------------+
+	| replace('hello world', 'l', 'L') |
+	+----------------------------------+
+	| heLLo worLd                      |
+	+----------------------------------+
+	1 row in set (0.00 sec)
+
+	mysql> select strcmp('hello', 'Hello') from dual;
+	+--------------------------+
+	| strcmp('hello', 'Hello') |
+	+--------------------------+
+	|                        0 |
+	+--------------------------+
+	1 row in set (0.00 sec)
+
+	mysql> select strcmp('hello', 'hello') from dual;
+	+--------------------------+
+	| strcmp('hello', 'hello') |
+	+--------------------------+
+	|                        0 |
+	+--------------------------+
+	1 row in set (0.00 sec)
+
+
+

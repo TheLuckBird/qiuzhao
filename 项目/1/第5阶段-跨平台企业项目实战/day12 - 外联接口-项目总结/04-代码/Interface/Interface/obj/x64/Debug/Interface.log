@@ -1,0 +1,37 @@
+﻿生成启动时间为 2019/6/21 15:45:16。
+     1>项目“C:\Users\Kevin\Desktop\Interface\Interface\Interface.vcxproj”在节点 2 上(Build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“C:\Users\Kevin\Desktop\Interface\Interface\obj\x64\Debug\Interface.tlog\unsuccessfulbuild”执行 Touch 任务。
+       _ValidateSources:
+         Validating sources
+       _CopySources:
+         Copying sources remotely to '192.168.247.166'
+         Skipping copying files as they are up to date.
+       _ValidateValidArchitecture:
+         Validating architecture
+         Current project architecture 'x64' is compatible with the remote system architecture 'x64' ('x64').
+       ClCompile:
+         Starting remote build
+         Compiling sources:
+         Skipping 'C:\Users\Kevin\Desktop\Interface\Interface\AesCrypto.cpp', as it is up to date.
+         Skipping 'C:\Users\Kevin\Desktop\Interface\Interface\BaseShm.cpp', as it is up to date.
+         Skipping 'C:\Users\Kevin\Desktop\Interface\Interface\Interface.cpp', as it is up to date.
+         Skipping 'C:\Users\Kevin\Desktop\Interface\Interface\SecKeyShm.cpp', as it is up to date.
+         Skipping 'C:\Users\Kevin\Desktop\Interface\Interface\test.cpp', as it is up to date.
+       Link:
+         Linking objects
+         Invoking 'ld'
+         g++ -o "/root/projects/Interface/bin/x64/Debug/Interface.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /root/projects/Interface/obj/x64/Debug/AesCrypto.o /root/projects/Interface/obj/x64/Debug/BaseShm.o /root/projects/Interface/obj/x64/Debug/Interface.o /root/projects/Interface/obj/x64/Debug/SecKeyShm.o /root/projects/Interface/obj/x64/Debug/test.o -ljson -lcrypto
+         Done linking, output file name: '/root/projects/Interface/bin/x64/Debug/Interface.out'
+         Copying file '/root/projects/Interface/bin/x64/Debug/Interface.out' to 'C:\Users\Kevin\Desktop\Interface\Interface\bin\x64\Debug\Interface.out'
+         Interface.vcxproj -> C:\Users\Kevin\Desktop\Interface\Interface\bin\x64\Debug\Interface.out
+       FinalizeBuildStatus:
+         正在删除文件“C:\Users\Kevin\Desktop\Interface\Interface\obj\x64\Debug\Interface.tlog\unsuccessfulbuild”。
+         正在对“C:\Users\Kevin\Desktop\Interface\Interface\obj\x64\Debug\Interface.tlog\Interface.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“C:\Users\Kevin\Desktop\Interface\Interface\Interface.vcxproj”(Build 个目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.09

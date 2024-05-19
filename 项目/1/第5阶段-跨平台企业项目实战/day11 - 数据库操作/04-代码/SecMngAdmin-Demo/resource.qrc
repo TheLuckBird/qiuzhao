@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/background.bmp</file>
+        <file>images/log.ico</file>
+        <file>images/op_log.ico</file>
+        <file>images/re.ico</file>
+        <file>images/report.ico</file>
+        <file>images/req.ico</file>
+        <file>images/set.ico</file>
+        <file>images/title.png</file>
+        <file>images/user.ico</file>
+    </qresource>
+</RCC>
